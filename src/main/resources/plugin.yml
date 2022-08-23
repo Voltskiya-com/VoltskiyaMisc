@@ -1,0 +1,7 @@
+name: VoltskiyaAppleMisc
+version: "1.0"
+api-version: "1.17"
+authors: [ 'Apple' ]
+main: apple.voltskiya.miscellaneous.VoltskiyaPlugin
+description: a plugin for miscilaneous game changing
+softdepend: [ LoadDependencies, AppleConfigs, AppleMCUtil, DecodingNms, VoltskiyaUtilities ]
