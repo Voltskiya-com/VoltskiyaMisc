@@ -1,7 +1,6 @@
-package apple.voltskiya.miscellaneous.gms.back;
+package apple.voltskiya.miscellaneous.gms.checkpoint;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import apple.voltskiya.miscellaneous.gms.back.LocationHistoryDatabase;
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
@@ -25,7 +24,7 @@ public class CommandForward extends BaseCommand {
 
     @Default
     public void forward(Player player) {
-        Location back = LocationHistoryDatabase.getInstance().forward(player.getUniqueId());
+        Location back = LocationHistoryDatabase.forward(player.getUniqueId());
         if (back == null) {
             player.sendMessage(ChatColor.RED + "There are no locations for you to teleport forward to");
             return;

@@ -1,4 +1,4 @@
-package apple.voltskiya.miscellaneous.gms.back;
+package apple.voltskiya.miscellaneous.gms.checkpoint;
 
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
@@ -13,15 +13,17 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 
 @CommandAlias("back")
 public class CommandBack extends BaseCommand implements SendMessage {
+
     public CommandBack() {
         VoltskiyaPlugin.get().registerCommand(this);
     }
 
     @Default
     public void back(Player player) {
-        Location back = LocationHistoryDatabase.getInstance().back(player.getUniqueId(), player.getLocation());
+        Location back = LocationHistoryDatabase.back(player.getUniqueId(), player.getLocation());
         if (back == null) {
-            player.sendMessage(ChatColor.RED + "There are no locations for you to teleport back to");
+            player.sendMessage(
+                ChatColor.RED + "There are no locations for you to teleport back to");
             return;
         }
         player.teleport(back, PlayerTeleportEvent.TeleportCause.SPECTATE);
@@ -34,7 +36,7 @@ public class CommandBack extends BaseCommand implements SendMessage {
 
     @Subcommand("clear all")
     public void clearHistory(Player player) {
-        if (LocationHistoryDatabase.getInstance().clearHistory(player.getUniqueId())) {
+        if (LocationHistoryDatabase.clearHistory(player.getUniqueId())) {
             green(player, "Successfully cleared your location history");
         } else {
             red(player, "Failed to clear your history. You have no history to clear");
@@ -43,7 +45,7 @@ public class CommandBack extends BaseCommand implements SendMessage {
 
     @Subcommand("clear one")
     public void clear(Player player) {
-        if (LocationHistoryDatabase.getInstance().clearOne(player.getUniqueId())) {
+        if (LocationHistoryDatabase.clearOne(player.getUniqueId())) {
             green(player, "Successfully cleared a single location in your location history");
         } else {
             red(player,

@@ -51,9 +51,15 @@ dependencies {
     compileOnly 'com.google.code.gson:gson:2.9.0'
 }
 jar {
+
 }
 remap {
-    archiveDirectory.set(file(serverBuildDir))
     version.set '1.19.2'
     dependsOn(jar)
+    doLast {
+        copy {
+            from jar.getArchiveFile()
+            into file(serverBuildDir)
+        }
+    }
 }

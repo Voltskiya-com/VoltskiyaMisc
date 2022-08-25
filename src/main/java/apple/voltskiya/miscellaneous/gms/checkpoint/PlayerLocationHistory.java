@@ -1,25 +1,30 @@
-package apple.voltskiya.miscellaneous.gms.back;
+package apple.voltskiya.miscellaneous.gms.checkpoint;
 
+import apple.utilities.database.SaveFileable;
 import apple.utilities.util.NumberUtils;
 import apple.utilities.util.ObjectUtilsFormatting;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
-import java.util.stream.Collectors;
+public class PlayerLocationHistory implements SaveFileable {
 
-public class PlayerLocationHistory {
     public static final int HISTORY_SIZE = 15;
 
-    private List<PlayerLocationEntry> history;
+    private List<PlayerLocationEntry> history = new ArrayList<>();
     private final Map<String, PlayerLocationEntry> checkPoints = new HashMap<>();
 
-    private int nowIndexInHistory;
+    private int nowIndexInHistory = 0;
+    private UUID player;
 
-    public PlayerLocationHistory() {
-        history = new ArrayList<>();
-        nowIndexInHistory = 0;
+    public PlayerLocationHistory(UUID player) {
+        this.player = player;
     }
 
     public void createBack(Location prevLocation) {
@@ -40,19 +45,23 @@ public class PlayerLocationHistory {
     @Nullable
     public Location back(@NotNull Location newerLoc) {
         int size = history.size();
-        if (nowIndexInHistory == size) history.add(new PlayerLocationEntry(newerLoc));
+        if (nowIndexInHistory == size)
+            history.add(new PlayerLocationEntry(newerLoc));
 
-        return NumberUtils.between(0, nowIndexInHistory - 1, size) ? history.get(--nowIndexInHistory).toLocation() : null;
+        return NumberUtils.between(0, nowIndexInHistory - 1, size) ? history.get(
+            --nowIndexInHistory).toLocation() : null;
     }
 
     @Nullable
     public Location forward() {
-        return NumberUtils.between(0, nowIndexInHistory + 1, history.size()) ? history.get(++nowIndexInHistory).toLocation() : null;
+        return NumberUtils.between(0, nowIndexInHistory + 1, history.size()) ? history.get(
+            ++nowIndexInHistory).toLocation() : null;
     }
 
     @Nullable
     public Location checkpoint(String name) {
-        return ObjectUtilsFormatting.defaultIfNull(null, checkPoints.get(name), PlayerLocationEntry::toLocation);
+        return ObjectUtilsFormatting.defaultIfNull(null, checkPoints.get(name),
+            PlayerLocationEntry::toLocation);
     }
 
     public PlayerLocationEntry createCheckpoint(Location location, String name) {
@@ -66,7 +75,8 @@ public class PlayerLocationHistory {
     }
 
     public List<String> checkpointList() {
-        return this.checkPoints.keySet().stream().sorted(String.CASE_INSENSITIVE_ORDER).collect(Collectors.toList());
+        return this.checkPoints.keySet().stream().sorted(String.CASE_INSENSITIVE_ORDER)
+            .collect(Collectors.toList());
     }
 
     public boolean clearHistory() {
@@ -85,5 +95,10 @@ public class PlayerLocationHistory {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String getSaveFileName() {
+        return this.player.toString();
     }
 }

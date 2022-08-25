@@ -3,11 +3,18 @@ package apple.voltskiya.miscellaneous.gms;
 import apple.lib.pmc.PluginModule;
 import apple.mc.utilities.PluginModuleMcUtil;
 import apple.mc.utilities.player.wand.WandType;
-import apple.voltskiya.miscellaneous.gms.back.*;
+import apple.voltskiya.miscellaneous.gms.checkpoint.CommandBack;
+import apple.voltskiya.miscellaneous.gms.checkpoint.CommandForward;
+import apple.voltskiya.miscellaneous.gms.checkpoint.CommandPlayerWarp;
+import apple.voltskiya.miscellaneous.gms.checkpoint.LocationHistoryDatabase;
+import apple.voltskiya.miscellaneous.gms.checkpoint.TeleportListener;
 import apple.voltskiya.miscellaneous.gms.colors.CommandKeldo;
 import apple.voltskiya.miscellaneous.gms.colors.WandKeldo;
+import apple.voltskiya.miscellaneous.gms.warp.CommandWarp;
+import apple.voltskiya.miscellaneous.gms.warp.WarpDatabase;
 
 public class PluginCommands extends PluginModule implements PluginModuleMcUtil {
+
     private static PluginModule instance;
     public static WandType<WandKeldo> WAND_KELDO;
 
@@ -21,7 +28,9 @@ public class PluginCommands extends PluginModule implements PluginModuleMcUtil {
         LocationHistoryDatabase.initialize();
         new CommandBack();
         new CommandForward();
-        new CommandCheckpoint();
+        WarpDatabase.initialize();
+        new CommandWarp();
+        new CommandPlayerWarp();
         new TeleportListener();
         new CommandRepair();
         new CommandItemDetails();
@@ -34,6 +43,6 @@ public class PluginCommands extends PluginModule implements PluginModuleMcUtil {
 
     @Override
     public String getName() {
-        return "misc_commands";
+        return "GmCommands";
     }
 }
