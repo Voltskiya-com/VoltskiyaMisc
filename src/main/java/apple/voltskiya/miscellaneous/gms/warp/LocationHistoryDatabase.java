@@ -1,11 +1,11 @@
-package apple.voltskiya.miscellaneous.gms.checkpoint;
+package apple.voltskiya.miscellaneous.gms.warp;
 
+import apple.lib.pmc.FileIOServiceNow;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDTyped;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.util.ObjectUtilsFormatting;
 import apple.voltskiya.miscellaneous.gms.PluginCommands;
-import apple.voltskiya.miscellaneous.io.FileIOService;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +23,7 @@ public class LocationHistoryDatabase {
     public static void initialize() {
         File file = PluginCommands.get().getFile("LocationHistory.json");
         manager = AppleAJD.createTyped(PlayerLocationHistory.class, file,
-            FileIOService.get().taskCreator());
+            FileIOServiceNow.get().taskCreator());
         manager.loadFolderNow();
     }
 

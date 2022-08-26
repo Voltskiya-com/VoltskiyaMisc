@@ -1,6 +1,8 @@
 package apple.voltskiya.miscellaneous.tool.snow;
 
 import apple.mc.utilities.player.wand.Wand;
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.FluidCollisionMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,10 +17,8 @@ import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SnowToolWand extends Wand {
+
     private static final int MAX_FORCE = 10;
     private int radius = 4;
     private Mode mode = Mode.ADD;
@@ -30,19 +30,23 @@ public class SnowToolWand extends Wand {
 
     @Override
     public void onEvent(PlayerInteractEvent event) {
-        if (actionIsRight(event.getAction())) rightClick(event);
+        System.out.println("onEvent");
+        if (actionIsRight(event.getAction()))
+            rightClick(event);
     }
 
 
     public void rightClick(PlayerInteractEvent event) {
+        System.out.println("right");
         Location playerLocation = event.getPlayer().getLocation();
         World world = playerLocation.getWorld();
         @Nullable RayTraceResult raytrace = world.rayTraceBlocks(playerLocation,
-                                                                 playerLocation.getDirection(),
-                                                                 200,
-                                                                 FluidCollisionMode.NEVER
+            playerLocation.getDirection(),
+            200,
+            FluidCollisionMode.NEVER
         );
-        if (raytrace == null) return;
+        if (raytrace == null)
+            return;
         @NotNull Vector hit = raytrace.getHitPosition();
         double locX = hit.getX();
         double locY = hit.getY();
@@ -51,9 +55,12 @@ public class SnowToolWand extends Wand {
         for (int xi = -radius; xi <= radius; xi++) {
             for (int zi = -radius; zi <= radius; zi++) {
                 for (int yi = radius; yi >= -radius; yi--) {
-                    @NotNull Block block = world.getBlockAt((int) locX + xi, (int) locY + yi, (int) locZ + zi);
-                    if (block.getType() == Material.SNOW && block.getBlockData() instanceof Snow snowBlock) {
-                        snowBlocks.add(new SnowBlock(block.getX(), block.getY(), block.getZ(), snowBlock.getLayers()));
+                    @NotNull Block block = world.getBlockAt((int) locX + xi, (int) locY + yi,
+                        (int) locZ + zi);
+                    if (block.getType() == Material.SNOW
+                        && block.getBlockData() instanceof Snow snowBlock) {
+                        snowBlocks.add(new SnowBlock(block.getX(), block.getY(), block.getZ(),
+                            snowBlock.getLayers()));
                         break;
                     } else if (block.getType() == Material.SNOW_BLOCK) {
                         snowBlocks.add(new SnowBlock(block.getX(), block.getY(), block.getZ(), 8));
@@ -76,7 +83,8 @@ public class SnowToolWand extends Wand {
             sumY += snowBlock.mutatedY();
             sumZ += snowBlock.z();
         }
-        double centerX = sumX / countOfBlocks, centerY = sumY / countOfBlocks, centerZ = sumZ / countOfBlocks;
+        double centerX = sumX / countOfBlocks, centerY = sumY / countOfBlocks, centerZ =
+            sumZ / countOfBlocks;
         double xx = 0d, xy = 0d, xz = 0d, yy = 0d, yz = 0d, zz = 0d;
         for (SnowBlock snowBlock : snowBlocks) {
             double x = snowBlock.x() - centerX;
@@ -124,13 +132,15 @@ public class SnowToolWand extends Wand {
                 if (yi >= maxHeight || yi < 0) {
                     continue;
                 }
-                @NotNull Block block = world.getBlockAt((int) locX + xi, (int) (yi), (int) locZ + zi);
+                @NotNull Block block = world.getBlockAt((int) locX + xi, (int) (yi),
+                    (int) locZ + zi);
                 if (block.getType() == Material.AIR) {
                     // go down
-                    if (yi < 0 || yi > maxHeight) break;
+                    if (yi < 0 || yi > maxHeight)
+                        break;
                     while ((block = world.getBlockAt((int) locX + xi,
-                                                     (int) (yi),
-                                                     (int) locZ + zi
+                        (int) (yi),
+                        (int) locZ + zi
                     )).getType() == Material.AIR) {
                         yi--;
                         if (yi < 0) {
@@ -139,21 +149,26 @@ public class SnowToolWand extends Wand {
                     }
                 } else {
                     // go up
-                    if (yi < 0 || yi > maxHeight) break;
-                    while (world.getBlockAt((int) locX + xi, (int) (yi), (int) locZ + zi).getType() != Material.AIR) {
+                    if (yi < 0 || yi > maxHeight)
+                        break;
+                    while (world.getBlockAt((int) locX + xi, (int) (yi), (int) locZ + zi).getType()
+                        != Material.AIR) {
                         yi++;
-                        if (yi >= maxHeight) break;
+                        if (yi >= maxHeight)
+                            break;
                     }
                     yi--;
                     block = world.getBlockAt((int) locX + xi, (int) (yi), (int) locZ + zi);
                 }
                 // we are at a top block
                 double realY;
-                if (block.getType() == Material.SNOW && block.getBlockData() instanceof Snow snowBlock) {
+                if (block.getType() == Material.SNOW
+                    && block.getBlockData() instanceof Snow snowBlock) {
                     if (snowBlock.getLayers() == snowBlock.getMaximumLayers()) {
                         realY = ((int) yi) + 1;
                     } else {
-                        realY = ((int) yi) + snowBlock.getLayers() / (double) snowBlock.getMaximumLayers();
+                        realY = ((int) yi)
+                            + snowBlock.getLayers() / (double) snowBlock.getMaximumLayers();
                     }
                 } else if (block.getType() == Material.AIR) {
                     continue;
@@ -166,7 +181,8 @@ public class SnowToolWand extends Wand {
                 } else {
                     yi--;
                     block = world.getBlockAt((int) locX + xi, (int) (locY + yi), (int) locZ + zi);
-                    if (block.getType() != Material.SNOW || block.getType() != Material.SNOW_BLOCK) {
+                    if (block.getType() != Material.SNOW
+                        || block.getType() != Material.SNOW_BLOCK) {
                         continue;
                     }
                 }
@@ -214,12 +230,14 @@ public class SnowToolWand extends Wand {
     }
 
     private record SnowBlock(int x, int y, int z, int level) {
+
         public double mutatedY() {
             return y + level / 8d;
         }
     }
 
     private static final class Plane {
+
         private double x;
         private double y;
         private double z;

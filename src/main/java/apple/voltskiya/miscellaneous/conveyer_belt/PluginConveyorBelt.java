@@ -3,6 +3,7 @@ package apple.voltskiya.miscellaneous.conveyer_belt;
 import apple.lib.pmc.PluginModule;
 
 public class PluginConveyorBelt extends PluginModule {
+
     private static PluginConveyorBelt instance;
 
     public static PluginConveyorBelt get() {
@@ -15,6 +16,11 @@ public class PluginConveyorBelt extends PluginModule {
         new ConveyorCommand();
         new ConveyorRunning();
         new ConveyorWandListener();
+    }
+
+    @Override
+    public boolean shouldEnable() {
+        return false;
     }
 
     @Override

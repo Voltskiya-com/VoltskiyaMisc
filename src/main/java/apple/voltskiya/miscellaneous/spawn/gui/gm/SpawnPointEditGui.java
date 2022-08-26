@@ -3,21 +3,21 @@ package apple.voltskiya.miscellaneous.spawn.gui.gm;
 import apple.mc.utilities.inventory.gui.acd.page.InventoryGuiPageImplACD;
 import apple.voltskiya.miscellaneous.spawn.PlayerSpawnDatabase;
 import apple.voltskiya.miscellaneous.spawn.PlayerSpawnpoints;
+import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
-
 public class SpawnPointEditGui extends InventoryGuiPageImplACD<SpawnJoinEditGuiMain> {
+
     private final PlayerSpawnpoints spawnPoint;
     private final int index;
 
     public SpawnPointEditGui(SpawnJoinEditGuiMain parent, PlayerSpawnpoints spawnPoint, int index) {
         super(parent);
-        this.spawnPoint = spawnPoint == null ? new PlayerSpawnpoints(makeItem(Material.GLASS_BOTTLE),
-                                                                     this.parent.getPlayer().getLocation()
-        ) : spawnPoint.copy();
+        this.spawnPoint =
+            spawnPoint == null ? new PlayerSpawnpoints(makeItem(Material.GLASS_BOTTLE),
+                this.parent.getPlayer().getLocation()) : spawnPoint.copy();
         this.index = index;
     }
 
@@ -30,13 +30,8 @@ public class SpawnPointEditGui extends InventoryGuiPageImplACD<SpawnJoinEditGuiM
             PlayerSpawnDatabase.get().setSpawnPoint(index, spawnPoint);
             parentRemoveSubPage();
         }, saveItem()));
-        setSlot(3,
-                slotDoNothing(makeItem(Material.SPRUCE_SIGN,
-                                       1,
-                                       "To change the block",
-                                       List.of("Click an item in your inventory")
-                ))
-        );
+        setSlot(3, slotDoNothing(makeItem(Material.SPRUCE_SIGN, 1, "To change the block",
+            List.of("Click an item in your inventory"))));
         setSlot(4, slotImpl(e -> {
             spawnPoint.setLocation(parent.getPlayer().getLocation());
         }, makeItem(Material.LIGHTNING_ROD, "Set the location")));
@@ -54,7 +49,8 @@ public class SpawnPointEditGui extends InventoryGuiPageImplACD<SpawnJoinEditGuiM
     @Override
     public void onPlayerInventory(InventoryClickEvent event) {
         ItemStack currentItem = event.getCurrentItem();
-        if (currentItem != null) spawnPoint.setItem(currentItem);
+        if (currentItem != null)
+            spawnPoint.setItem(currentItem);
         refresh();
     }
 

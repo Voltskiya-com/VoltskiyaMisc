@@ -1,20 +1,25 @@
 package apple.voltskiya.miscellaneous.ai_changes.hit_revenge;
 
+import static apple.voltskiya.miscellaneous.bottom_top.BottomTopDeathListener.VEHICLE_SOUL_MATE_TAG;
+
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
+import java.util.List;
 import org.bukkit.GameMode;
-import org.bukkit.entity.*;
+import org.bukkit.Location;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.projectiles.ProjectileSource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-
-import static apple.voltskiya.miscellaneous.bottom_top.BottomTopDeathListener.VEHICLE_SOUL_MATE_TAG;
+import voltskiya.apple.utilities.DistanceUtils;
 
 public class HitRevengeListener implements Listener {
+
     public HitRevengeListener() {
         VoltskiyaPlugin.get().registerEvents(this);
     }
@@ -23,29 +28,31 @@ public class HitRevengeListener implements Listener {
     public void onHitDoRevenge(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
         final Entity damaged = event.getEntity();
-        if (damager instanceof Arrow) {
-            ProjectileSource shooter = ((Arrow) damager).getShooter();
-            if (shooter instanceof LivingEntity) {
-                damager = (LivingEntity) shooter;
+        if (damager instanceof Arrow arrow) {
+            if (arrow.getShooter() instanceof Entity damagerEntity) {
+                damager = damagerEntity;
             }
         }
-        if (damaged instanceof Mob && damager instanceof LivingEntity)
-            anger((Mob) damaged, (LivingEntity) damager);
-        if (damager instanceof LivingEntity && damaged.getScoreboardTags().contains(VEHICLE_SOUL_MATE_TAG)) {
+        if (!(damager instanceof LivingEntity damagerLiving))
+            return;
+        if (damaged instanceof Mob mob)
+            anger(mob, damagerLiving);
+        if (damaged.getScoreboardTags().contains(VEHICLE_SOUL_MATE_TAG)) {
             // do targeting to everyone linked by vehicles
-            upTarget(damaged, (LivingEntity) damager);
+            upTarget(damaged, damagerLiving);
 
             @Nullable Entity down = damaged.getVehicle();
             if (down != null)
-                downTarget(down, (LivingEntity) damager);
+                downTarget(down, damagerLiving);
         }
     }
 
     private void downTarget(Entity damaged, LivingEntity damager) {
         @Nullable Entity down = damaged.getVehicle();
-        if (down != null) downTarget(down, damager);
-        if (damaged instanceof Mob)
-            anger((Mob) damaged, damager);
+        if (down != null)
+            downTarget(down, damager);
+        if (damaged instanceof Mob mob)
+            anger(mob, damager);
     }
 
     private void upTarget(Entity damaged, LivingEntity damager) {
@@ -55,16 +62,24 @@ public class HitRevengeListener implements Listener {
                 upTarget(e, damager);
             }
         }
-        if (damaged instanceof Mob)
-            anger((Mob) damaged, damager);
+        if (damaged instanceof Mob mob)
+            anger(mob, damager);
     }
 
     private void anger(Mob damaged, LivingEntity damager) {
-        if (damager instanceof Player && ((Player) damager).getGameMode() != GameMode.SURVIVAL) {
+        // spectators don't count!!!
+        if (damager instanceof Player player && player.getGameMode() != GameMode.SURVIVAL) {
             return;
         }
-        if (damaged.getTarget() == null) {
+        LivingEntity target = damaged.getTarget();
+        Location myLocation = damaged.getLocation();
+        if (target == null) {
             damaged.setTarget(damager);
+            return;
         }
+        double distanceToTarget = DistanceUtils.distance(target.getLocation(), myLocation);
+        double distanceToDamager = DistanceUtils.distance(damager.getLocation(), myLocation);
+        if (distanceToDamager < distanceToTarget)
+            damaged.setTarget(damager);
     }
 }

@@ -1,7 +1,15 @@
 package apple.voltskiya.miscellaneous.players;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import org.bukkit.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import net.kyori.adventure.text.Component;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Goat;
@@ -18,13 +26,10 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 public class PlayerMilk implements Listener {
 
-    public static final NamespacedKey MILK_NAMESPACED_KEY = new NamespacedKey(VoltskiyaPlugin.get(), "milk");
+    public static final NamespacedKey MILK_NAMESPACED_KEY = new NamespacedKey(VoltskiyaPlugin.get(),
+        "milk");
     private final Map<UUID, Integer> lastMilked = new HashMap<>();
 
     public PlayerMilk() {
@@ -48,7 +53,7 @@ public class PlayerMilk implements Listener {
                     dataContainer.set(MILK_NAMESPACED_KEY, PersistentDataType.INTEGER, 1);
                     if (itemMeta instanceof PotionMeta potionMeta) {
                         potionMeta.setColor(Color.WHITE);
-                        potionMeta.setDisplayName("Milk Bottle");
+                        potionMeta.displayName(Component.text("Milk Bottle"));
                         milk.setItemMeta(potionMeta);
                     } else {
                         milk.setItemMeta(itemMeta);

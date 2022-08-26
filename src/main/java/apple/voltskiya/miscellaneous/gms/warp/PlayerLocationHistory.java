@@ -1,4 +1,4 @@
-package apple.voltskiya.miscellaneous.gms.checkpoint;
+package apple.voltskiya.miscellaneous.gms.warp;
 
 import apple.utilities.database.SaveFileable;
 import apple.utilities.util.NumberUtils;

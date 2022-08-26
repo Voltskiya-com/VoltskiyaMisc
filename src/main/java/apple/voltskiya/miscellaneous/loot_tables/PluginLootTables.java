@@ -13,14 +13,14 @@ import apple.voltskiya.miscellaneous.loot_tables.xp.LootTableKillListener;
 import apple.voltskiya.miscellaneous.loot_tables.xp.LootXpTableManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.util.List;
 
 public class PluginLootTables extends PluginModule {
+
     private static PluginLootTables instance;
-    private static final String SPECIAL_ITEMS_CONFIG = "special_item_flags";
-    private static final String LOOT_BLOCK_CONFIG = "loottable_block";
-    private static final String LOOT_XP_CONFIG = "loottable_xp";
+    private static final String SPECIAL_ITEMS_CONFIG = "SpecialItemFlags";
+    private static final String LOOT_BLOCK_CONFIG = "LoottableBlock";
+    private static final String LOOT_XP_CONFIG = "LoottableXp";
 
     public static PluginLootTables get() {
         return instance;
@@ -48,11 +48,12 @@ public class PluginLootTables extends PluginModule {
     public List<AppleConfigLike> getConfigs() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         GsonSerializeMC.registerNBTTagTypeAdapter(gsonBuilder);
+        GsonSerializeMC.registerEntityTypeTypeAdapter(gsonBuilder);
         GsonSerializeMC.registerMinecraftKeyTypeAdapter(gsonBuilder);
         Gson gson = gsonBuilder.create();
         return List.of(configJson(BlockBreakTableList.class, LOOT_BLOCK_CONFIG).asJson(gson),
-                       configJson(LootXpTableManager.class, LOOT_XP_CONFIG).asJson(gson),
-                       configJson(SpecialItemDatabase.class, SPECIAL_ITEMS_CONFIG).asJson(gson)
+            configJson(LootXpTableManager.class, LOOT_XP_CONFIG).asJson(gson),
+            configJson(SpecialItemDatabase.class, SPECIAL_ITEMS_CONFIG).asJson(gson)
         );
     }
 
@@ -70,6 +71,7 @@ public class PluginLootTables extends PluginModule {
 
     private void save(String configName) {
         AppleConfig<?> config = AppleConfigsDatabase.get().findConfig(List.of(configName));
-        if (config != null) config.save();
+        if (config != null)
+            config.save();
     }
 }

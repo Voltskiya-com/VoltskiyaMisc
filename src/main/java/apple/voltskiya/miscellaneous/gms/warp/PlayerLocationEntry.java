@@ -1,4 +1,4 @@
-package apple.voltskiya.miscellaneous.gms.checkpoint;
+package apple.voltskiya.miscellaneous.gms.warp;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

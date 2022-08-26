@@ -12,12 +12,13 @@ import org.bukkit.entity.Player;
 @CommandAlias("flyspeed")
 @CommandPermission("gm.flyspeed")
 public class CommandSetFlyspeed extends BaseCommand {
+
     public CommandSetFlyspeed() {
         VoltskiyaPlugin.get().getCommandManager().registerCommand(this);
     }
 
     @Default
-    @CommandCompletion("speed")
+    @CommandCompletion("speed @range:10")
     public void flySpeed(Player player, float speed) {
         if (speed > 10 || speed < 0) {
             player.sendMessage(ChatColor.RED + "The speed must be between 0 and 10");

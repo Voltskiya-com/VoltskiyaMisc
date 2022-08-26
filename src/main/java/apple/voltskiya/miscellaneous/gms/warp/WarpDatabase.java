@@ -1,12 +1,12 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
+import apple.lib.pmc.FileIOServiceNow;
 import apple.mc.utilities.data.serialize.GsonSerializeLocation.Options;
 import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDInst;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.voltskiya.miscellaneous.gms.PluginCommands;
-import apple.voltskiya.miscellaneous.io.FileIOService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
@@ -23,7 +23,8 @@ public class WarpDatabase {
 
     public static void initialize() {
         File file = PluginCommands.get().getFile("WarpDatabase.json");
-        manager = AppleAJD.createInst(WarpDatabase.class, file, FileIOService.taskCreator());
+        manager = AppleAJD.createInst(WarpDatabase.class, file,
+            FileIOServiceNow.get().taskCreator());
         Gson gson = GsonSerializeMC.registerLocationTypeAdapter(new GsonBuilder(),
             new Options(true, true, true)).create();
         manager.setSerializingJson(gson);

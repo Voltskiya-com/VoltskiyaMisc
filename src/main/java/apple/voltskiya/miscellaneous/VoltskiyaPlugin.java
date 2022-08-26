@@ -1,7 +1,7 @@
 package apple.voltskiya.miscellaneous;
 
+import apple.lib.pmc.ApplePlugin;
 import apple.lib.pmc.PluginModule;
-import apple.mc.utilities.ApplePluginUtil;
 import apple.voltskiya.miscellaneous.ai_changes.PluginAIChanges;
 import apple.voltskiya.miscellaneous.arrows.PluginArrowTags;
 import apple.voltskiya.miscellaneous.bottom_top.PluginBottomTop;
@@ -16,12 +16,11 @@ import apple.voltskiya.miscellaneous.players.PluginPlayerChanges;
 import apple.voltskiya.miscellaneous.spawn.PluginPlayerSpawn;
 import apple.voltskiya.miscellaneous.tag_gamerules.PluginTagGamerules;
 import apple.voltskiya.miscellaneous.tool.PluginPowerTool;
-import apple.voltskiya.miscellaneous.wanted.PluginVillage;
-
 import java.util.Collection;
 import java.util.List;
 
-public class VoltskiyaPlugin extends ApplePluginUtil {
+public class VoltskiyaPlugin extends ApplePlugin {
+
     private static VoltskiyaPlugin instance;
 
     public VoltskiyaPlugin() {
@@ -34,23 +33,11 @@ public class VoltskiyaPlugin extends ApplePluginUtil {
 
     @Override
     public Collection<PluginModule> getModules() {
-        return List.of(
-                new PluginLootTables(),
-                new PluginBottomTop(),
-                new PluginCommands(),
-                new PluginTagGamerules(),
-                new PluginEventsNatural(),
-                new PluginAIChanges(),
-                new PluginArrowTags(),
-                new PluginFix(),
-                new PluginCoral(),
-                new PluginPlayerSpawn(),
-                new PluginConveyorBelt(),
-                new PluginPlayerChanges(),
-                new PluginCommandFinder(),
-                new PluginVillage(),
-                new PluginPowerTool()
-        );
+        return List.of(new PluginLootTables(), new PluginBottomTop(), new PluginCommands(),
+            new PluginTagGamerules(), new PluginEventsNatural(), new PluginAIChanges(),
+            new PluginArrowTags(), new PluginFix(), new PluginCoral(), new PluginPlayerSpawn(),
+            new PluginConveyorBelt(), new PluginPlayerChanges(), new PluginCommandFinder(),
+            new PluginPowerTool(), new Snowball());
     }
 }
 

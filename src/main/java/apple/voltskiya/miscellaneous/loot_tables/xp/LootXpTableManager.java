@@ -31,12 +31,22 @@ public class LootXpTableManager {
         save();
     }
 
+    public static void remove(String tag) {
+        instance.tagXpTables.remove(tag);
+        save();
+    }
+
     private static void save() {
         PluginLootTables.get().saveLootTableXp();
     }
 
     public static void add(EntityType<?> entityType, int xp) {
         instance.entityXpTables.put(entityType, xp);
+        save();
+    }
+
+    public static void remove(EntityType<?> entityType) {
+        instance.entityXpTables.remove(entityType);
         save();
     }
 

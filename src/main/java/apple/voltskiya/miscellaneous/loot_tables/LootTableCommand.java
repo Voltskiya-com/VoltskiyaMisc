@@ -61,9 +61,13 @@ public class LootTableCommand extends BaseCommand implements SendMessage {
         public class ByTag extends BaseCommand {
 
             @Subcommand("set")
-            @CommandCompletion("[tag]|@loottable_by_tag [xp]|@range:1-50")
-            public void byTag(CommandSender sender, @Single String tag, int xp) {
-                LootXpTableManager.add(tag, xp);
+            @CommandCompletion("[tag]|@loottable_by_tag [xp]|@range:50")
+            public void byTag(CommandSender sender, @Single String tag,
+                @co.aikar.commands.annotation.Optional() Integer xp) {
+                if (xp == null)
+                    LootXpTableManager.remove(tag);
+                else
+                    LootXpTableManager.add(tag, xp);
                 green(sender, "Success!");
             }
 
@@ -82,14 +86,18 @@ public class LootTableCommand extends BaseCommand implements SendMessage {
         public class ByType extends BaseCommand {
 
             @Subcommand("set")
-            @CommandCompletion("@entity_type [xp]|@range:1-50")
-            public void byType(CommandSender sender, String entityType, int xp) {
+            @CommandCompletion("@entity_type [xp]|@range:50")
+            public void byType(CommandSender sender, String entityType,
+                @co.aikar.commands.annotation.Optional() Integer xp) {
                 Optional<EntityType<?>> entityTypes = EntityType.byString(entityType);
                 if (entityTypes.isEmpty()) {
                     red(sender, "There is no entity type '%s'", entityType);
                     return;
                 }
-                LootXpTableManager.add(entityTypes.get(), xp);
+                if (xp == null)
+                    LootXpTableManager.remove(entityTypes.get());
+                else
+                    LootXpTableManager.add(entityTypes.get(), xp);
                 green(sender, "Success!");
             }
 

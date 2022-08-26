@@ -1,13 +1,11 @@
 package apple.voltskiya.miscellaneous.coral;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import org.bukkit.Bukkit;
+import java.util.HashSet;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFadeEvent;
-
-import java.util.HashSet;
 
 public class CoralFadeListener implements Listener {
 
@@ -35,7 +33,7 @@ public class CoralFadeListener implements Listener {
     }};
 
     public CoralFadeListener() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
     @EventHandler

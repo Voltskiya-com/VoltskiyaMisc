@@ -50,9 +50,6 @@ dependencies {
     compileOnly 'org.jetbrains:annotations:23.0.0'
     compileOnly 'com.google.code.gson:gson:2.9.0'
 }
-jar {
-
-}
 remap {
     version.set '1.19.2'
     dependsOn(jar)

@@ -1,19 +1,20 @@
 package apple.voltskiya.miscellaneous.spawn;
 
+import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDInst;
 import apple.utilities.threading.service.base.handler.TaskHandler;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.threading.service.queue.TaskHandlerQueue;
-import org.bukkit.Location;
-import org.jetbrains.annotations.Nullable;
-
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import org.bukkit.Location;
+import org.jetbrains.annotations.Nullable;
 
 public class PlayerSpawnDatabase {
+
     private static final TaskHandler<AsyncTaskQueue> ioService = new TaskHandlerQueue(10, 10, 10);
     private static AppleAJDInst<PlayerSpawnDatabase, AsyncTaskQueue> manager;
 
@@ -32,7 +33,8 @@ public class PlayerSpawnDatabase {
     public static void load() {
         File file = PluginPlayerSpawn.get().getFile(PLAYER_SPAWN_DATABASE);
         manager = AppleAJD.createInst(PlayerSpawnDatabase.class, file, ioService.taskCreator());
-        manager.loadNow();
+        manager.setSerializingJson(GsonSerializeMC.completeGsonBuilderMC().create());
+        manager.loadOrMake();
     }
 
     public Map<Integer, PlayerSpawnpoints> getSpawnPoints() {

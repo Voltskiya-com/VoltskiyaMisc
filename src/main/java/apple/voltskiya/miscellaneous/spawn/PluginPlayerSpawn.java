@@ -4,13 +4,11 @@ import apple.configs.factory.AppleConfigLike;
 import apple.lib.pmc.PluginModule;
 import apple.mc.utilities.data.serialize.GsonSerializeLocation;
 import apple.mc.utilities.data.serialize.GsonSerializeMC;
-import apple.voltskiya.miscellaneous.spawn.commands.CommandSpawnEditJoin;
-import apple.voltskiya.miscellaneous.spawn.commands.CommandSpawnJoin;
 import com.google.gson.GsonBuilder;
-
 import java.util.List;
 
 public class PluginPlayerSpawn extends PluginModule {
+
     private static PluginPlayerSpawn instance;
 
     public static PluginPlayerSpawn get() {
@@ -25,7 +23,6 @@ public class PluginPlayerSpawn extends PluginModule {
     public void enable() {
         PlayerSpawnDatabase.load();
         new CommandSpawnJoin();
-        new CommandSpawnEditJoin();
         new PlayerDeathSpawnListener();
     }
 

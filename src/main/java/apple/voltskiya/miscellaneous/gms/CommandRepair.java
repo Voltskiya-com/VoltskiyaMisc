@@ -2,16 +2,22 @@ package apple.voltskiya.miscellaneous.gms;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.*;
+import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
+import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Default;
+import co.aikar.commands.annotation.Subcommand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 @CommandAlias("repair")
 @CommandPermission("gm.repair")
 public class CommandRepair extends BaseCommand {
+
     public CommandRepair() {
         VoltskiyaPlugin.get().getCommandManager().registerCommand(this);
     }
@@ -26,25 +32,34 @@ public class CommandRepair extends BaseCommand {
         double perc = points / 100d;
         @NotNull ItemStack item = player.getInventory().getItemInMainHand();
         ItemMeta itemMeta = item.getItemMeta();
-        if (itemMeta != null) {
-            if (itemMeta instanceof org.bukkit.inventory.meta.Damageable) {
-                final org.bukkit.inventory.meta.Damageable damageable = (org.bukkit.inventory.meta.Damageable) itemMeta;
-                short maxDura = item.getType().getMaxDurability();
-                damageable.setDamage(maxDura-(int) (maxDura * perc));
-                item.setItemMeta(itemMeta);
-            }
+        if (itemMeta instanceof Damageable damageable) {
+            short maxDura = item.getType().getMaxDurability();
+            damageable.setDamage(maxDura - (int) (maxDura * perc));
+            item.setItemMeta(itemMeta);
         }
+
     }
 
+    @Default()
     @Subcommand("full")
     public void repair(Player player) {
         @NotNull ItemStack item = player.getInventory().getItemInMainHand();
         ItemMeta itemMeta = item.getItemMeta();
-        if (itemMeta != null) {
-            if (itemMeta instanceof org.bukkit.inventory.meta.Damageable) {
-                final org.bukkit.inventory.meta.Damageable damageable = (org.bukkit.inventory.meta.Damageable) itemMeta;
-                damageable.setDamage(1);
-                item.setItemMeta(itemMeta);
+        if (itemMeta instanceof Damageable damageable) {
+            damageable.setDamage(0);
+            item.setItemMeta(damageable);
+        }
+    }
+
+    @Default()
+    @Subcommand("inventory")
+    public void repairInventory(Player player) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item == null)
+                continue;
+            if (item.getItemMeta() instanceof Damageable damageable) {
+                damageable.setDamage(0);
+                item.setItemMeta(damageable);
             }
         }
     }
@@ -62,7 +77,7 @@ public class CommandRepair extends BaseCommand {
             if (itemMeta instanceof org.bukkit.inventory.meta.Damageable) {
                 final org.bukkit.inventory.meta.Damageable damageable = (org.bukkit.inventory.meta.Damageable) itemMeta;
                 short maxDura = item.getType().getMaxDurability();
-                damageable.setDamage(maxDura-Math.min(maxDura, points));
+                damageable.setDamage(maxDura - Math.min(maxDura, points));
                 item.setItemMeta(itemMeta);
             }
         }

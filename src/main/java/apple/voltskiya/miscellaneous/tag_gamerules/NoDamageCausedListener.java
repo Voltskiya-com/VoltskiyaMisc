@@ -40,7 +40,7 @@ public class NoDamageCausedListener implements Listener {
     }
 
     @EventHandler
-    public void noDamage(EntityDamageByEntityEvent event) {
+    public void noPoison(EntityDamageByEntityEvent event) {
         if (event.getDamager().getScoreboardTags().contains(NO_BEE_STING_POISON)) {
             Entity entity = event.getEntity();
             entity.addScoreboardTag(NO_BEE_STING_POISON_INFLICTED);
@@ -49,7 +49,7 @@ public class NoDamageCausedListener implements Listener {
     }
 
     @EventHandler
-    public void noDamage(EntityPotionEffectEvent event) {
+    public void noPoison(EntityPotionEffectEvent event) {
         if (event.getAction() == EntityPotionEffectEvent.Action.ADDED && event.getEntity()
             .getScoreboardTags().contains(NO_BEE_STING_POISON_INFLICTED)) {
             event.setCancelled(true);
