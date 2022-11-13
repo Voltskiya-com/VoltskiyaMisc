@@ -1,9 +1,9 @@
 package apple.voltskiya.miscellaneous.loot_tables;
 
-import apple.configs.data.config.AppleConfig;
-import apple.configs.factory.AppleConfigLike;
-import apple.configs.registered.AppleConfigsDatabase;
-import apple.lib.pmc.PluginModule;
+import apple.lib.configs.data.AppleConfigsDatabase;
+import apple.lib.configs.data.config.AppleConfig;
+import apple.lib.configs.factory.AppleConfigLike;
+import apple.lib.pmc.AppleModule;
 import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.voltskiya.miscellaneous.loot_tables.block.BlockBreakTableList;
 import apple.voltskiya.miscellaneous.loot_tables.block.BlockBreaker;
@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
 
-public class PluginLootTables extends PluginModule {
+public class PluginLootTables extends AppleModule {
 
     private static PluginLootTables instance;
     private static final String SPECIAL_ITEMS_CONFIG = "SpecialItemFlags";

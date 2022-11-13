@@ -1,10 +1,10 @@
 package apple.voltskiya.miscellaneous.fixing;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.Optional;
-import co.aikar.commands.annotation.Subcommand;
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.Optional;
+import apple.lib.acf.annotation.Subcommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

@@ -1,8 +1,8 @@
 package apple.voltskiya.miscellaneous.conveyer_belt;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 
-public class PluginConveyorBelt extends PluginModule {
+public class PluginConveyorBelt extends AppleModule {
 
     private static PluginConveyorBelt instance;
 

@@ -1,12 +1,12 @@
 package apple.voltskiya.miscellaneous.gms;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.CommandCompletion;
+import apple.lib.acf.annotation.CommandPermission;
+import apple.lib.acf.annotation.Default;
+import apple.lib.acf.annotation.Subcommand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

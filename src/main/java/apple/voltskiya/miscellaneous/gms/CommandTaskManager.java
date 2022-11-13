@@ -2,10 +2,10 @@ package apple.voltskiya.miscellaneous.gms;
 
 import apple.utilities.util.SystemUsage;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Subcommand;
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.CommandPermission;
+import apple.lib.acf.annotation.Subcommand;
 import java.util.concurrent.atomic.AtomicBoolean;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;

@@ -1,6 +1,6 @@
 package apple.voltskiya.miscellaneous.gms;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 import apple.mc.utilities.PluginModuleMcUtil;
 import apple.mc.utilities.player.wand.WandType;
 import apple.voltskiya.miscellaneous.gms.colors.CommandKeldo;
@@ -12,12 +12,12 @@ import apple.voltskiya.miscellaneous.gms.warp.LocationHistoryDatabase;
 import apple.voltskiya.miscellaneous.gms.warp.TeleportListener;
 import apple.voltskiya.miscellaneous.gms.warp.WarpDatabase;
 
-public class PluginCommands extends PluginModule implements PluginModuleMcUtil {
+public class PluginCommands extends AppleModule implements PluginModuleMcUtil {
 
-    private static PluginModule instance;
+    private static AppleModule instance;
     public static WandType<WandKeldo> WAND_KELDO;
 
-    public static PluginModule get() {
+    public static AppleModule get() {
         return instance;
     }
 
@@ -26,6 +26,9 @@ public class PluginCommands extends PluginModule implements PluginModuleMcUtil {
         instance = this;
         LocationHistoryDatabase.initialize();
         WarpDatabase.initialize();
+        new CommandGamemode();
+        new CommandHeal();
+        new CommandFeed();
         new CommandBack();
         new CommandForward();
         new CommandWarp();

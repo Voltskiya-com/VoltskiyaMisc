@@ -7,15 +7,15 @@ import apple.nms.decoding.world.DecodeMinecraftKey;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import apple.voltskiya.miscellaneous.loot_tables.block.gui.BlockTableGui;
 import apple.voltskiya.miscellaneous.loot_tables.xp.LootXpTableManager;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.BukkitCommandCompletionContext;
-import co.aikar.commands.CommandCompletions;
-import co.aikar.commands.PaperCommandManager;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Single;
-import co.aikar.commands.annotation.Subcommand;
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.BukkitCommandCompletionContext;
+import apple.lib.acf.CommandCompletions;
+import apple.lib.acf.PaperCommandManager;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.CommandCompletion;
+import apple.lib.acf.annotation.CommandPermission;
+import apple.lib.acf.annotation.Single;
+import apple.lib.acf.annotation.Subcommand;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
@@ -63,7 +63,7 @@ public class LootTableCommand extends BaseCommand implements SendMessage {
             @Subcommand("set")
             @CommandCompletion("[tag]|@loottable_by_tag [xp]|@range:50")
             public void byTag(CommandSender sender, @Single String tag,
-                @co.aikar.commands.annotation.Optional() Integer xp) {
+                @apple.lib.acf.annotation.Optional() Integer xp) {
                 if (xp == null)
                     LootXpTableManager.remove(tag);
                 else
@@ -88,7 +88,7 @@ public class LootTableCommand extends BaseCommand implements SendMessage {
             @Subcommand("set")
             @CommandCompletion("@entity_type [xp]|@range:50")
             public void byType(CommandSender sender, String entityType,
-                @co.aikar.commands.annotation.Optional() Integer xp) {
+                @apple.lib.acf.annotation.Optional() Integer xp) {
                 Optional<EntityType<?>> entityTypes = EntityType.byString(entityType);
                 if (entityTypes.isEmpty()) {
                     red(sender, "There is no entity type '%s'", entityType);

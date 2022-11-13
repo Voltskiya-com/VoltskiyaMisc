@@ -1,18 +1,20 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.BukkitCommandCompletionContext;
+import apple.lib.acf.CommandCompletions;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.CommandCompletion;
+import apple.lib.acf.annotation.Name;
+import apple.lib.acf.annotation.Subcommand;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.BukkitCommandCompletionContext;
-import co.aikar.commands.CommandCompletions;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.Name;
-import co.aikar.commands.annotation.Subcommand;
+import java.util.Collection;
 import java.util.Locale;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 @CommandAlias("warp")
 public class CommandWarp extends BaseCommand implements SendMessage {
@@ -21,9 +23,39 @@ public class CommandWarp extends BaseCommand implements SendMessage {
         VoltskiyaPlugin.get().registerCommand(this);
         CommandCompletions<BukkitCommandCompletionContext> completions = VoltskiyaPlugin.get()
             .getCommandManager().getCommandCompletions();
-        completions.registerAsyncCompletion("warps", (c) -> WarpDatabase.get().list());
+        completions.registerAsyncCompletion("warps", this::listWarps);
         completions.registerAsyncCompletion("checkpoint_locations",
             (c) -> LocationHistoryDatabase.checkpointList(c.getPlayer().getUniqueId()));
+    }
+
+    public Collection<String> listWarps(BukkitCommandCompletionContext context) {
+        String filter = context.getContextValue(String.class);
+        return WarpDatabase.get().list().stream().filter(warp -> warp.startsWith(filter))
+            .map((warp) -> trimWarpName(filter, warp)).toList();
+    }
+
+    private String trimWarpName(String filter, WarpEntry warp) {
+        String warpName = warp.getName();
+        int filterSpacesCount = countSpaces(filter);
+        if (filterSpacesCount == 0)
+            return warpName;
+        char[] warpChars = warpName.toCharArray();
+        for (int i = 0; i < warpChars.length; i++) {
+            if (warpChars[i] == ' ') {
+                if (--filterSpacesCount == 0)
+                    return warpName.substring(i + 1);
+            }
+        }
+        return "";
+    }
+
+    private int countSpaces(String name) {
+        int spacesCount = 0;
+        for (char c : name.toCharArray()) {
+            if (c == ' ')
+                spacesCount++;
+        }
+        return spacesCount;
     }
 
     @Subcommand("tp")
@@ -34,7 +66,7 @@ public class CommandWarp extends BaseCommand implements SendMessage {
             red(player, "There are no warps named '%s'", name);
             return;
         }
-        player.teleport(warp.getLocation(), PlayerTeleportEvent.TeleportCause.SPECTATE);
+        player.teleport(warp.getLocation(), TeleportCause.COMMAND);
     }
 
     @Subcommand("set")

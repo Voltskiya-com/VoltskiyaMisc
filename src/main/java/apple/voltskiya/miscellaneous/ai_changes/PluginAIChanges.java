@@ -1,10 +1,10 @@
 package apple.voltskiya.miscellaneous.ai_changes;
 
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 import apple.voltskiya.miscellaneous.ai_changes.hit_revenge.HitRevengeListener;
 
-public class PluginAIChanges extends PluginModule {
+public class PluginAIChanges extends AppleModule {
     @Override
     public void enable() {
         new HitRevengeListener();

@@ -1,8 +1,8 @@
 package apple.voltskiya.miscellaneous.bottom_top;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 
-public class PluginBottomTop extends PluginModule {
+public class PluginBottomTop extends AppleModule {
     @Override
     public void enable() {
         new BottomTopDeathListener();

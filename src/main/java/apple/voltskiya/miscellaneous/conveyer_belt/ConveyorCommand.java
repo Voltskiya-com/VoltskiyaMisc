@@ -2,11 +2,11 @@ package apple.voltskiya.miscellaneous.conveyer_belt;
 
 import apple.mc.utilities.inventory.item.InventoryUtils;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import apple.lib.acf.BaseCommand;
+import apple.lib.acf.annotation.CommandAlias;
+import apple.lib.acf.annotation.CommandCompletion;
+import apple.lib.acf.annotation.Default;
+import apple.lib.acf.annotation.Subcommand;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;

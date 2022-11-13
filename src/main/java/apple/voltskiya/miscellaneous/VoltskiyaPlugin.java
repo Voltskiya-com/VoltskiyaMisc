@@ -1,7 +1,7 @@
 package apple.voltskiya.miscellaneous;
 
+import apple.lib.pmc.AppleModule;
 import apple.lib.pmc.ApplePlugin;
-import apple.lib.pmc.PluginModule;
 import apple.voltskiya.miscellaneous.ai_changes.PluginAIChanges;
 import apple.voltskiya.miscellaneous.arrows.PluginArrowTags;
 import apple.voltskiya.miscellaneous.bottom_top.PluginBottomTop;
@@ -32,7 +32,7 @@ public class VoltskiyaPlugin extends ApplePlugin {
     }
 
     @Override
-    public Collection<PluginModule> getModules() {
+    public Collection<AppleModule> getModules() {
         return List.of(new PluginLootTables(), new PluginBottomTop(), new PluginCommands(),
             new PluginTagGamerules(), new PluginEventsNatural(), new PluginAIChanges(),
             new PluginArrowTags(), new PluginFix(), new PluginCoral(), new PluginPlayerSpawn(),

@@ -21,7 +21,7 @@ public class LocationHistoryDatabase {
     private static final Map<UUID, PlayerLocationHistory> locationHistory = new HashMap<>();
 
     public static void initialize() {
-        File file = PluginCommands.get().getFile("LocationHistory.json");
+        File file = PluginCommands.get().getFile("LocationHistory");
         manager = AppleAJD.createTyped(PlayerLocationHistory.class, file,
             FileIOServiceNow.get().taskCreator());
         manager.loadFolderNow();

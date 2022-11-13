@@ -1,9 +1,9 @@
 package apple.voltskiya.miscellaneous.command_output;
 
 import org.bukkit.event.HandlerList;
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 
-public class PluginCommandFinder extends PluginModule {
+public class PluginCommandFinder extends AppleModule {
     private static PluginCommandFinder instance;
     private CommandIntercepter listener = null;
 

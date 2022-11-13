@@ -22,4 +22,9 @@ public class WarpEntry {
     public String getName() {
         return name;
     }
+
+    public boolean startsWith(String filter) {
+        return WarpDatabase.normalizeWarpName(this.getName())
+            .startsWith(WarpDatabase.normalizeWarpName(filter));
+    }
 }

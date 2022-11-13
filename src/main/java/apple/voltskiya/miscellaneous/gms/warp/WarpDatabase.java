@@ -7,10 +7,10 @@ import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDInst;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.voltskiya.miscellaneous.gms.PluginCommands;
+import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.File;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import org.bukkit.Location;
@@ -35,25 +35,26 @@ public class WarpDatabase {
         return manager.getInstance();
     }
 
+    public ImmutableList<WarpEntry> list() {
+        return ImmutableList.copyOf(this.warps.values());
+    }
+
     @Nullable
     public WarpEntry getWarp(String name) {
-        return warps.get(normalizeName(name));
+        return warps.get(normalizeWarpName(name));
     }
 
     public void create(Location location, String name) {
-        warps.put(normalizeName(name), new WarpEntry(location, name));
+        warps.put(normalizeWarpName(name), new WarpEntry(location, name));
         manager.save();
     }
 
-    private String normalizeName(String name) {
+    public static String normalizeWarpName(String name) {
         return name.toLowerCase(Locale.ROOT).trim().replace(' ', '_');
     }
 
-    public Collection<String> list() {
-        return warps.values().stream().map(WarpEntry::getName).toList();
-    }
 
     public WarpEntry remove(String name) {
-        return warps.remove(normalizeName(name));
+        return warps.remove(normalizeWarpName(name));
     }
 }

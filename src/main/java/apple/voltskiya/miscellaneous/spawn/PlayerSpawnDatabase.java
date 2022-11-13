@@ -21,7 +21,7 @@ public class PlayerSpawnDatabase {
     public Location respawnBox;
     public UUID mainWorld;
 
-    private Map<Integer, PlayerSpawnpoints> spawnpoints = new HashMap<>();
+    private final Map<Integer, PlayerSpawnpoints> spawnpoints = new HashMap<>();
 
 
     public static PlayerSpawnDatabase get() {

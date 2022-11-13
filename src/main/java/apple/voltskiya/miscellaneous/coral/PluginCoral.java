@@ -1,8 +1,8 @@
 package apple.voltskiya.miscellaneous.coral;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 
-public class PluginCoral extends PluginModule {
+public class PluginCoral extends AppleModule {
     /**
      * enables the module with listeners and commands and anything else
      */

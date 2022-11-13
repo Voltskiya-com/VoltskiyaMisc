@@ -99,6 +99,6 @@ public class PlayerLocationHistory implements SaveFileable {
 
     @Override
     public String getSaveFileName() {
-        return this.player.toString();
+        return extensionJson(this.player.toString());
     }
 }

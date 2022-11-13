@@ -1,8 +1,8 @@
 package apple.voltskiya.miscellaneous.players;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 
-public class PluginPlayerChanges extends PluginModule {
+public class PluginPlayerChanges extends AppleModule {
     @Override
     public void enable() {
         new PlayerBlockingLoginListener();

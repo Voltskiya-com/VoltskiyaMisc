@@ -1,13 +1,10 @@
 package apple.voltskiya.miscellaneous.spawn;
 
-import apple.configs.factory.AppleConfigLike;
-import apple.lib.pmc.PluginModule;
-import apple.mc.utilities.data.serialize.GsonSerializeLocation;
-import apple.mc.utilities.data.serialize.GsonSerializeMC;
-import com.google.gson.GsonBuilder;
+import apple.lib.configs.factory.AppleConfigLike;
+import apple.lib.pmc.AppleModule;
 import java.util.List;
 
-public class PluginPlayerSpawn extends PluginModule {
+public class PluginPlayerSpawn extends AppleModule {
 
     private static PluginPlayerSpawn instance;
 
@@ -33,13 +30,6 @@ public class PluginPlayerSpawn extends PluginModule {
 
     @Override
     public List<AppleConfigLike> getConfigs() {
-        GsonBuilder gson = new GsonBuilder();
-        GsonSerializeLocation.Options options = new GsonSerializeLocation.Options(true, true, true);
-        GsonSerializeMC.registerLocationTypeAdapter(gson, options);
-        return List.of(configYaml(PlayerSpawnConfig.class, "PlayerSpawnConfig"));
-    }
-
-    public void saveSpawnPoints() {
-        PlayerSpawnDatabase.get().save();
+        return List.of(config(PlayerSpawnConfig.class, "PlayerSpawnConfig"));
     }
 }

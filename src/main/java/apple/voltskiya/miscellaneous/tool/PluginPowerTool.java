@@ -1,12 +1,12 @@
 package apple.voltskiya.miscellaneous.tool;
 
-import apple.lib.pmc.PluginModule;
+import apple.lib.pmc.AppleModule;
 import apple.mc.utilities.PluginModuleMcUtil;
 import apple.mc.utilities.player.wand.WandType;
 import apple.voltskiya.miscellaneous.tool.snow.SnowToolCommand;
 import apple.voltskiya.miscellaneous.tool.snow.SnowToolWand;
 
-public class PluginPowerTool extends PluginModule implements PluginModuleMcUtil {
+public class PluginPowerTool extends AppleModule implements PluginModuleMcUtil {
     public static WandType<SnowToolWand> SNOW_WAND;
 
     @Override
