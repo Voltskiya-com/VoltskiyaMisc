@@ -1,6 +1,6 @@
 package apple.voltskiya.miscellaneous;
 
-import apple.lib.pmc.AppleModule;
+import com.voltskiya.lib.AbstractModule;
 import apple.mc.utilities.inventory.item.InventoryUtils;
 import java.util.Random;
 import org.bukkit.Bukkit;
@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Snowball extends AppleModule implements Listener {
+public class Snowball extends AbstractModule implements Listener {
 
     private static final String SNOWBALL = "snowball";
 

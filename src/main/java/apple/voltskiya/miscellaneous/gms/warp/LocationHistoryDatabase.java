@@ -1,12 +1,13 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
-import apple.lib.pmc.FileIOServiceNow;
+import com.voltskiya.lib.pmc.FileIOServiceNow;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDTyped;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.util.ObjectUtilsFormatting;
 import apple.voltskiya.miscellaneous.gms.PluginCommands;
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,10 @@ public class LocationHistoryDatabase {
         File file = PluginCommands.get().getFile("LocationHistory");
         manager = AppleAJD.createTyped(PlayerLocationHistory.class, file,
             FileIOServiceNow.get().taskCreator());
-        manager.loadFolderNow();
+        Collection<PlayerLocationHistory> folder = manager.loadFolderNow();
+        for (PlayerLocationHistory player : folder) {
+            locationHistory.put(player.getUUID(), player);
+        }
     }
 
 

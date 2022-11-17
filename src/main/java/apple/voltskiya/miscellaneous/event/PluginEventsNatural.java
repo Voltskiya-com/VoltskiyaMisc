@@ -1,8 +1,8 @@
 package apple.voltskiya.miscellaneous.event;
 
-import apple.lib.pmc.AppleModule;
+import com.voltskiya.lib.AbstractModule;
 
-public class PluginEventsNatural extends AppleModule {
+public class PluginEventsNatural extends AbstractModule {
     /**
      * enables the module with listeners and commands and anything else
      */
