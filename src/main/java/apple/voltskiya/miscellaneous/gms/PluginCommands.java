@@ -1,23 +1,24 @@
 package apple.voltskiya.miscellaneous.gms;
 
-import apple.lib.pmc.AppleModule;
-import apple.mc.utilities.PluginModuleMcUtil;
-import apple.mc.utilities.player.wand.WandType;
-import apple.voltskiya.miscellaneous.gms.colors.CommandKeldo;
-import apple.voltskiya.miscellaneous.gms.colors.WandKeldo;
+import apple.voltskiya.miscellaneous.gms.cmi.CommandFeed;
+import apple.voltskiya.miscellaneous.gms.cmi.CommandHeal;
+import apple.voltskiya.miscellaneous.gms.cmi.CommandSetFlyspeed;
+import apple.voltskiya.miscellaneous.gms.give.tagged.CommandGiveTagged;
+import apple.voltskiya.miscellaneous.gms.item.CommandItemDetails;
+import apple.voltskiya.miscellaneous.gms.item.CommandRepair;
 import apple.voltskiya.miscellaneous.gms.warp.CommandBack;
 import apple.voltskiya.miscellaneous.gms.warp.CommandForward;
 import apple.voltskiya.miscellaneous.gms.warp.CommandWarp;
 import apple.voltskiya.miscellaneous.gms.warp.LocationHistoryDatabase;
 import apple.voltskiya.miscellaneous.gms.warp.TeleportListener;
 import apple.voltskiya.miscellaneous.gms.warp.WarpDatabase;
+import com.voltskiya.lib.AbstractModule;
 
-public class PluginCommands extends AppleModule implements PluginModuleMcUtil {
+public class PluginCommands extends AbstractModule {
 
-    private static AppleModule instance;
-    public static WandType<WandKeldo> WAND_KELDO;
+    private static AbstractModule instance;
 
-    public static AppleModule get() {
+    public static AbstractModule get() {
         return instance;
     }
 
@@ -36,9 +37,7 @@ public class PluginCommands extends AppleModule implements PluginModuleMcUtil {
         new CommandRepair();
         new CommandItemDetails();
         new CommandSetFlyspeed();
-//        new CommandTaskManager();
-        new CommandKeldo();
-        WAND_KELDO = createWand(WandKeldo::new, "keldo_grass");
+        new CommandGiveTagged();
     }
 
     @Override

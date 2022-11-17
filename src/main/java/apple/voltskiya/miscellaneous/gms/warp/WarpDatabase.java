@@ -1,6 +1,6 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
-import apple.lib.pmc.FileIOServiceNow;
+import com.voltskiya.lib.pmc.FileIOServiceNow;
 import apple.mc.utilities.data.serialize.GsonSerializeLocation.Options;
 import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.utilities.database.ajd.AppleAJD;
@@ -29,6 +29,9 @@ public class WarpDatabase {
             new Options(true, true, true)).create();
         manager.setSerializingJson(gson);
         manager.loadOrMake();
+    }
+
+    public WarpDatabase() {
     }
 
     public static WarpDatabase get() {

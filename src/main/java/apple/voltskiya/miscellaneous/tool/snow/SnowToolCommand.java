@@ -1,16 +1,17 @@
 package apple.voltskiya.miscellaneous.tool.snow;
 
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.utilities.util.Pretty;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import apple.voltskiya.miscellaneous.tool.PluginPowerTool;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandCompletion;
-import apple.lib.acf.annotation.Default;
-import apple.lib.acf.annotation.Name;
-import apple.lib.acf.annotation.Optional;
-import apple.lib.acf.annotation.Subcommand;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.annotation.Name;
+import com.voltskiya.lib.acf.annotation.Optional;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -20,6 +21,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 @CommandAlias("snowtool")
+@CommandPermission("volt.gm.dev.snowtool")
 public class SnowToolCommand extends BaseCommand implements SendMessage {
 
     public static final List<String> SNOW_TOOL_MODES = Arrays.stream(SnowToolWand.Mode.values())

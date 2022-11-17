@@ -1,9 +1,9 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.Default;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

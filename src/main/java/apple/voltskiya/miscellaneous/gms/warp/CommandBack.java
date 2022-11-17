@@ -1,9 +1,9 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.Default;
-import apple.lib.acf.annotation.Subcommand;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import org.bukkit.Location;

@@ -1,15 +1,15 @@
 package apple.voltskiya.miscellaneous.gms;
 
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
+import com.voltskiya.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.annotation.Name;
+import com.voltskiya.lib.acf.annotation.Optional;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.utilities.util.Pretty;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandCompletion;
-import apple.lib.acf.annotation.CommandPermission;
-import apple.lib.acf.annotation.Default;
-import apple.lib.acf.annotation.Name;
-import apple.lib.acf.annotation.Optional;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
@@ -43,11 +43,11 @@ public class CommandGamemode implements SendMessage {
     }
 
     @CommandAlias("gmc")
+    @CommandPermission("minecraft.command.gamemode")
     public class CommandGMC extends BaseCommand implements SendMessage {
 
         @Default()
         @CommandCompletion("@players")
-        @CommandPermission("gamemode")
         public void gamemode(CommandSender sender, @Optional() @Name("player") String player) {
             handleCommand(sender, player, GameMode.CREATIVE);
         }
@@ -56,32 +56,32 @@ public class CommandGamemode implements SendMessage {
     }
 
     @CommandAlias("gmsp")
+    @CommandPermission("minecraft.command.gamemode")
     public class CommandGMSP extends BaseCommand implements SendMessage {
 
         @Default()
         @CommandCompletion("@players")
-        @CommandPermission("gamemode")
         public void gamemode(CommandSender sender, @Optional() @Name("player") String player) {
             handleCommand(sender, player, GameMode.SPECTATOR);
         }
     }
 
     @CommandAlias("gms")
+    @CommandPermission("minecraft.command.gamemode")
     public class CommandGMS extends BaseCommand implements SendMessage {
 
         @Default()
         @CommandCompletion("@players")
-        @CommandPermission("gamemode")
         public void gamemode(CommandSender sender, @Optional() @Name("player") String player) {
             handleCommand(sender, player, GameMode.SURVIVAL);
         }
     }
 
     @CommandAlias("gma")
+    @CommandPermission("minecraft.command.gamemode")
     public class CommandGMA extends BaseCommand implements SendMessage {
 
         @Default()
-        @CommandPermission("gamemode")
         @CommandCompletion("@players")
         public void gamemode(CommandSender sender, @Optional() @Name("player") String player) {
             handleCommand(sender, player, GameMode.ADVENTURE);

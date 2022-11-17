@@ -1,10 +1,10 @@
 package apple.voltskiya.miscellaneous.spawn;
 
-import apple.lib.configs.factory.AppleConfigLike;
-import apple.lib.pmc.AppleModule;
+import com.voltskiya.lib.configs.factory.AppleConfigLike;
+import com.voltskiya.lib.AbstractModule;
 import java.util.List;
 
-public class PluginPlayerSpawn extends AppleModule {
+public class PluginPlayerSpawn extends AbstractModule {
 
     private static PluginPlayerSpawn instance;
 

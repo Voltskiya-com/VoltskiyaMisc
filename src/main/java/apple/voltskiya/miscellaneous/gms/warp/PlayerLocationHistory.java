@@ -101,4 +101,8 @@ public class PlayerLocationHistory implements SaveFileable {
     public String getSaveFileName() {
         return extensionJson(this.player.toString());
     }
+
+    public UUID getUUID() {
+        return this.player;
+    }
 }

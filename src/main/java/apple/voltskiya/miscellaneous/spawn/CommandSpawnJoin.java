@@ -1,15 +1,15 @@
 package apple.voltskiya.miscellaneous.spawn;
 
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
+import com.voltskiya.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.mc.utilities.world.vector.VectorUtils;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import apple.voltskiya.miscellaneous.spawn.gui.gm.SpawnJoinEditGui;
 import apple.voltskiya.miscellaneous.spawn.gui.player.SpawnJoinGui;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandPermission;
-import apple.lib.acf.annotation.Default;
-import apple.lib.acf.annotation.Subcommand;
 import org.bukkit.entity.Player;
 
 @CommandAlias("join")
@@ -33,24 +33,21 @@ public class CommandSpawnJoin extends BaseCommand implements SendMessage {
         player.openInventory(new SpawnJoinGui(player).getInventory());
     }
 
-    @CommandPermission("gm.edit_join")
     @Subcommand("edit")
+    @CommandPermission("volt.game.edit.join")
     public class CommandSpawnJoinEdit extends BaseCommand {
 
         @Default
-        @CommandPermission("gm.edit_join")
         @Subcommand("gui")
         public void spawn(Player player) {
             player.openInventory(new SpawnJoinEditGui(player).getInventory());
         }
 
-        @CommandPermission("gm.edit_join")
         @Subcommand("mainWorld")
         public void mainWorld(Player player) {
             PlayerSpawnDatabase.get().setMainWorld(player.getWorld().getUID());
         }
 
-        @CommandPermission("gm.edit_join")
         @Subcommand("boxSpawn")
         public void boxSpawn(Player player) {
             PlayerSpawnDatabase.get().setBoxSpawn(player.getLocation());

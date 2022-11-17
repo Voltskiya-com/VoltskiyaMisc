@@ -1,12 +1,13 @@
 package apple.voltskiya.miscellaneous.conveyer_belt;
 
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import apple.mc.utilities.inventory.item.InventoryUtils;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandCompletion;
-import apple.lib.acf.annotation.Default;
-import apple.lib.acf.annotation.Subcommand;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.Default;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -19,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 ;
 
 @CommandAlias("conveyor")
+@CommandPermission("volt.conveyor")
 public class ConveyorCommand extends BaseCommand {
     public ConveyorCommand() {
         VoltskiyaPlugin.get().getCommandManager().registerCommand(this);

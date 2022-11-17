@@ -1,12 +1,12 @@
 package apple.voltskiya.miscellaneous.gms.warp;
 
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.BukkitCommandCompletionContext;
-import apple.lib.acf.CommandCompletions;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandCompletion;
-import apple.lib.acf.annotation.Name;
-import apple.lib.acf.annotation.Subcommand;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.BukkitCommandCompletionContext;
+import com.voltskiya.lib.acf.CommandCompletions;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.Name;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import java.util.Collection;

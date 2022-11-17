@@ -2,11 +2,11 @@ package apple.voltskiya.miscellaneous.event;
 
 import apple.voltskiya.miscellaneous.VoltskiyaPlugin;
 import apple.voltskiya.miscellaneous.event.basalt_dust_storm.BasaltDustStorm;
-import apple.lib.acf.BaseCommand;
-import apple.lib.acf.annotation.CommandAlias;
-import apple.lib.acf.annotation.CommandCompletion;
-import apple.lib.acf.annotation.CommandPermission;
-import apple.lib.acf.annotation.Subcommand;
+import com.voltskiya.lib.acf.BaseCommand;
+import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
+import com.voltskiya.lib.acf.annotation.Subcommand;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

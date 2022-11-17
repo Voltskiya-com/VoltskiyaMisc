@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerBlockingLoginListener implements Listener {
+
     public PlayerBlockingLoginListener() {
         Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
     }
