@@ -14,7 +14,7 @@ import com.voltskiya.misc.gms.warp.TeleportListener;
 import com.voltskiya.misc.gms.warp.WarpDatabase;
 import com.voltskiya.lib.AbstractModule;
 
-public class PluginCommands extends AbstractModule {
+public class CommandsModule extends AbstractModule {
 
     private static AbstractModule instance;
 

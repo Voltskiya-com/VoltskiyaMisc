@@ -1,6 +1,6 @@
 package com.voltskiya.misc.drops.xp;
 
-import com.voltskiya.misc.drops.PluginDrops;
+import com.voltskiya.misc.drops.DropsModule;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +37,7 @@ public class LootXpTableManager {
     }
 
     private static void save() {
-        PluginDrops.get().saveLootTableXp();
+        DropsModule.get().saveLootTableXp();
     }
 
     public static void add(EntityType<?> entityType, int xp) {

@@ -2,7 +2,7 @@ package com.voltskiya.misc.event;
 
 import com.voltskiya.lib.AbstractModule;
 
-public class PluginEventsNatural extends AbstractModule {
+public class EventsNaturalModule extends AbstractModule {
     /**
      * enables the module with listeners and commands and anything else
      */

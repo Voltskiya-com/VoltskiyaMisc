@@ -6,7 +6,7 @@ import apple.mc.utilities.player.wand.WandType;
 import com.voltskiya.misc.tool.snow.SnowToolCommand;
 import com.voltskiya.misc.tool.snow.SnowToolWand;
 
-public class PluginPowerTool extends AbstractModule implements PluginModuleMcUtil {
+public class ModulePowerTool extends AbstractModule implements PluginModuleMcUtil {
     public static WandType<SnowToolWand> SNOW_WAND;
 
     @Override

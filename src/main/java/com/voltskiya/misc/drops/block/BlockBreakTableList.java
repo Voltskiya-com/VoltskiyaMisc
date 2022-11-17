@@ -1,6 +1,6 @@
 package com.voltskiya.misc.drops.block;
 
-import com.voltskiya.misc.drops.PluginDrops;
+import com.voltskiya.misc.drops.DropsModule;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class BlockBreakTableList {
     }
 
     public void save() {
-        PluginDrops.get().saveLootTableBlock();
+        DropsModule.get().saveLootTableBlock();
     }
 
     public static BlockBreakTableList get() {

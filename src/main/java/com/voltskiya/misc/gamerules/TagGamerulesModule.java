@@ -8,7 +8,7 @@ import com.voltskiya.misc.gamerules.damage.NoEntityDamageListener;
 import com.voltskiya.misc.gamerules.revenge.HitRevengeListener;
 import com.voltskiya.misc.gamerules.soul_mate.SoulMateDeathListener;
 
-public class PluginTagGamerules extends AbstractModule {
+public class TagGamerulesModule extends AbstractModule {
 
     @Override
     public void enable() {

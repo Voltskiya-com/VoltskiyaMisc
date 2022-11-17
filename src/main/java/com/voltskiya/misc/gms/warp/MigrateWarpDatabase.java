@@ -1,7 +1,7 @@
 package com.voltskiya.misc.gms.warp;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
-import com.voltskiya.misc.gms.PluginCommands;
+import com.voltskiya.misc.gms.CommandsModule;
 import java.io.File;
 import java.util.Set;
 import java.util.UUID;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 public class MigrateWarpDatabase {
 
     public static void load() {
-        File file = PluginCommands.get().getFile("warps.yml");
+        File file = CommandsModule.get().getFile("warps.yml");
         ConfigurationSection yaml = YamlConfiguration.loadConfiguration(file)
             .getConfigurationSection("warps");
         Set<String> warpNames = yaml.getKeys(false);

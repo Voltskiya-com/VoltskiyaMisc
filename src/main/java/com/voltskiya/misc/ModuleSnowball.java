@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Snowball extends AbstractModule implements Listener {
+public class ModuleSnowball extends AbstractModule implements Listener {
 
     private static final String SNOWBALL = "snowball";
 
