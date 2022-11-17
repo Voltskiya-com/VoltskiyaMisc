@@ -6,7 +6,7 @@ import apple.utilities.database.ajd.AppleAJDTyped;
 import apple.utilities.threading.service.base.handler.TaskHandler;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.threading.service.queue.TaskHandlerQueue;
-import com.voltskiya.misc.spawn.PluginPlayerSpawn;
+import com.voltskiya.misc.spawn.ModulePlayerSpawn;
 import java.io.File;
 import java.util.Map;
 import java.util.UUID;
@@ -20,7 +20,7 @@ public class PlaythroughDatabase {
 
     public PlaythroughDatabase() {
         instance = this;
-        File file = PluginPlayerSpawn.get().getFile("PlayerSpawnDatabase.json");
+        File file = ModulePlayerSpawn.get().getFile("PlayerSpawnDatabase.json");
         TaskHandler<AsyncTaskQueue> ioService = new TaskHandlerQueue(10, 10, 10);
         manager = AppleAJD.createTyped(PlayerPlaythroughs.class, file, ioService.taskCreator());
         manager.setSerializingJson(GsonSerializeMC.completeGsonBuilderMC().create());

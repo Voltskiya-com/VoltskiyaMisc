@@ -29,7 +29,7 @@ public class PlayerSpawnDatabase {
     }
 
     public static void load() {
-        File file = PluginPlayerSpawn.get().getFile("PlayerSpawnDatabase.json");
+        File file = ModulePlayerSpawn.get().getFile("PlayerSpawnDatabase.json");
         manager = AppleAJD.createInst(PlayerSpawnDatabase.class, file, ioService.taskCreator());
         manager.setSerializingJson(GsonSerializeMC.completeGsonBuilderMC().create());
         manager.loadOrMake();

@@ -2,7 +2,7 @@ package com.voltskiya.misc.players;
 
 import com.voltskiya.lib.AbstractModule;
 
-public class PluginPlayerChanges extends AbstractModule {
+public class ModulePlayerChanges extends AbstractModule {
     @Override
     public void enable() {
         new PlayerBlockingLoginListener();

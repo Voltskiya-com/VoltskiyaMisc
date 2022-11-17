@@ -4,15 +4,15 @@ import com.voltskiya.lib.configs.factory.AppleConfigLike;
 import com.voltskiya.lib.AbstractModule;
 import java.util.List;
 
-public class PluginPlayerSpawn extends AbstractModule {
+public class ModulePlayerSpawn extends AbstractModule {
 
-    private static PluginPlayerSpawn instance;
+    private static ModulePlayerSpawn instance;
 
-    public static PluginPlayerSpawn get() {
+    public static ModulePlayerSpawn get() {
         return instance;
     }
 
-    public PluginPlayerSpawn() {
+    public ModulePlayerSpawn() {
         instance = this;
     }
 

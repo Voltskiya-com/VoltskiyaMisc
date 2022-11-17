@@ -1,6 +1,6 @@
 package com.voltskiya.misc.drops.items;
 
-import com.voltskiya.misc.drops.PluginDrops;
+import com.voltskiya.misc.drops.DropsModule;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SpecialItemDatabase {
     }
 
     private void save() {
-        PluginDrops.get().saveSpecialItems();
+        DropsModule.get().saveSpecialItems();
     }
 
     public List<String> getNames() {

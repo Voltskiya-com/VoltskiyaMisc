@@ -15,14 +15,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.util.List;
 
-public class PluginDrops extends AbstractModule {
+public class DropsModule extends AbstractModule {
 
-    private static PluginDrops instance;
+    private static DropsModule instance;
     private static final String SPECIAL_ITEMS_CONFIG = "SpecialItemFlags";
     private static final String LOOT_BLOCK_CONFIG = "LoottableBlock";
     private static final String LOOT_XP_CONFIG = "LoottableXp";
 
-    public static PluginDrops get() {
+    public static DropsModule get() {
         return instance;
     }
 

@@ -5,7 +5,7 @@ import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDTyped;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.util.ObjectUtilsFormatting;
-import com.voltskiya.misc.gms.PluginCommands;
+import com.voltskiya.misc.gms.CommandsModule;
 import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class LocationHistoryDatabase {
     private static final Map<UUID, PlayerLocationHistory> locationHistory = new HashMap<>();
 
     public static void initialize() {
-        File file = PluginCommands.get().getFile("LocationHistory");
+        File file = CommandsModule.get().getFile("LocationHistory");
         manager = AppleAJD.createTyped(PlayerLocationHistory.class, file,
             FileIOServiceNow.get().taskCreator());
         Collection<PlayerLocationHistory> folder = manager.loadFolderNow();

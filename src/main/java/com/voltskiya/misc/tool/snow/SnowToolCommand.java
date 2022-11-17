@@ -4,7 +4,7 @@ import com.voltskiya.lib.acf.annotation.CommandPermission;
 import apple.mc.utilities.player.chat.SendMessage;
 import apple.utilities.util.Pretty;
 import com.voltskiya.misc.VoltskiyaPlugin;
-import com.voltskiya.misc.tool.PluginPowerTool;
+import com.voltskiya.misc.tool.ModulePowerTool;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandCompletion;
@@ -36,7 +36,7 @@ public class SnowToolCommand extends BaseCommand implements SendMessage {
     @Default
     public void giveWand(Player player) {
         player.getInventory()
-            .addItem(PluginPowerTool.SNOW_WAND.createItem(Material.WHITE_TULIP, "Wand"));
+            .addItem(ModulePowerTool.SNOW_WAND.createItem(Material.WHITE_TULIP, "Wand"));
     }
 
     @Subcommand("give")
@@ -95,6 +95,6 @@ public class SnowToolCommand extends BaseCommand implements SendMessage {
     }
 
     private SnowToolWand getWand(Player player) {
-        return PluginPowerTool.SNOW_WAND.getWand(player);
+        return ModulePowerTool.SNOW_WAND.getWand(player);
     }
 }

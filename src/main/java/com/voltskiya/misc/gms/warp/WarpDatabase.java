@@ -6,7 +6,7 @@ import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDInst;
 import apple.utilities.threading.service.queue.AsyncTaskQueue;
-import com.voltskiya.misc.gms.PluginCommands;
+import com.voltskiya.misc.gms.CommandsModule;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,7 +22,7 @@ public class WarpDatabase {
     private final HashMap<String, WarpEntry> warps = new HashMap<>();
 
     public static void initialize() {
-        File file = PluginCommands.get().getFile("WarpDatabase.json");
+        File file = CommandsModule.get().getFile("WarpDatabase.json");
         manager = AppleAJD.createInst(WarpDatabase.class, file,
             FileIOServiceNow.get().taskCreator());
         Gson gson = GsonSerializeMC.registerLocationTypeAdapter(new GsonBuilder(),
