@@ -1,4 +1,4 @@
-package com.voltskiya.misc.admin;
+package com.voltskiya.misc.admin.reload;
 
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
