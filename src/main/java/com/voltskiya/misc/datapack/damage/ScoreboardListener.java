@@ -1,4 +1,4 @@
-package com.voltskiya.misc.datapack;
+package com.voltskiya.misc.datapack.damage;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
 import net.kyori.adventure.text.Component;
