@@ -1,4 +1,4 @@
-package com.voltskiya.misc.admin;
+package com.voltskiya.misc.datapack.reload;
 
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
@@ -8,16 +8,16 @@ import com.voltskiya.misc.VoltskiyaPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
-@CommandAlias("pr")
-@CommandPermission("bukkit.command.reload")
-public class CommandReload extends BaseCommand {
+@CommandAlias("dr")
+@CommandPermission("minecraft.command.reload")
+public class CommandDatapackReload extends BaseCommand {
 
-    public CommandReload() {
+    public CommandDatapackReload() {
         VoltskiyaPlugin.get().registerCommand(this);
     }
 
-    @Default()
-    public void pluginReload(CommandSender commandSender) {
-        Bukkit.dispatchCommand(commandSender, "bukkit:reload confirm");
+    @Default
+    public void reload(CommandSender commandSender) {
+        Bukkit.dispatchCommand(commandSender, "minecraft:reload");
     }
 }

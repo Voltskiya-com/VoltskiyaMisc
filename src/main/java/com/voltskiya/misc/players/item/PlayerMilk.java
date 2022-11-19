@@ -1,4 +1,4 @@
-package com.voltskiya.misc.players;
+package com.voltskiya.misc.players.item;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
 import java.util.HashMap;
