@@ -6,7 +6,6 @@ import com.voltskiya.misc.admin.PluginAdmin;
 import com.voltskiya.misc.datapack.ModuleDatapack;
 import com.voltskiya.misc.drops.DropsModule;
 import com.voltskiya.misc.event.EventsNaturalModule;
-import com.voltskiya.misc.fix.ModuleAttributes;
 import com.voltskiya.misc.gamerules.TagGamerulesModule;
 import com.voltskiya.misc.gms.CommandsModule;
 import com.voltskiya.misc.players.ModulePlayerChanges;
@@ -30,7 +29,7 @@ public class VoltskiyaPlugin extends AbstractVoltPlugin {
     @Override
     public Collection<AbstractModule> getModules() {
         return List.of(new DropsModule(), new CommandsModule(), new TagGamerulesModule(),
-            new EventsNaturalModule(), new ModuleAttributes(), new ModulePlayerSpawn(),
+            new EventsNaturalModule(), new ModulePlayerSpawn(),
             new ModulePlayerChanges(), new ModulePowerTool(), new ModuleSnowball(),
             new ModuleDatapack(), new PluginAdmin());
     }

@@ -1,4 +1,4 @@
-package com.voltskiya.misc.fix;
+package com.voltskiya.misc.players.attributes;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
 import org.bukkit.attribute.Attribute;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 public class PlayerAttributesConfig {
 
     private static PlayerAttributesConfig instance;
-    private double knockbackResistance = 0.1;
+    public double knockbackResistance = 0.1;
 
     public PlayerAttributesConfig() {
         instance = this;
