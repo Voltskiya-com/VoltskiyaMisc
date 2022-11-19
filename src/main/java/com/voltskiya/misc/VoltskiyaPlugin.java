@@ -1,15 +1,17 @@
 package com.voltskiya.misc;
 
+import com.voltskiya.lib.AbstractModule;
+import com.voltskiya.lib.AbstractVoltPlugin;
+import com.voltskiya.misc.admin.PluginAdmin;
+import com.voltskiya.misc.datapack.ModuleDatapack;
 import com.voltskiya.misc.drops.DropsModule;
 import com.voltskiya.misc.event.EventsNaturalModule;
-import com.voltskiya.misc.fix.ModuleFix;
+import com.voltskiya.misc.fix.ModuleAttributes;
 import com.voltskiya.misc.gamerules.TagGamerulesModule;
 import com.voltskiya.misc.gms.CommandsModule;
 import com.voltskiya.misc.players.ModulePlayerChanges;
 import com.voltskiya.misc.spawn.ModulePlayerSpawn;
 import com.voltskiya.misc.tool.ModulePowerTool;
-import com.voltskiya.lib.AbstractModule;
-import com.voltskiya.lib.AbstractVoltPlugin;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,8 +30,9 @@ public class VoltskiyaPlugin extends AbstractVoltPlugin {
     @Override
     public Collection<AbstractModule> getModules() {
         return List.of(new DropsModule(), new CommandsModule(), new TagGamerulesModule(),
-            new EventsNaturalModule(), new ModuleFix(), new ModulePlayerSpawn(),
-            new ModulePlayerChanges(), new ModulePowerTool(), new ModuleSnowball());
+            new EventsNaturalModule(), new ModuleAttributes(), new ModulePlayerSpawn(),
+            new ModulePlayerChanges(), new ModulePowerTool(), new ModuleSnowball(),
+            new ModuleDatapack(), new PluginAdmin());
     }
 }
 

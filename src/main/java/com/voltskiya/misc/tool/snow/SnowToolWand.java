@@ -30,14 +30,12 @@ public class SnowToolWand extends Wand {
 
     @Override
     public void onEvent(PlayerInteractEvent event) {
-        System.out.println("onEvent");
         if (actionIsRight(event.getAction()))
             rightClick(event);
     }
 
 
     public void rightClick(PlayerInteractEvent event) {
-        System.out.println("right");
         Location playerLocation = event.getPlayer().getLocation();
         World world = playerLocation.getWorld();
         @Nullable RayTraceResult raytrace = world.rayTraceBlocks(playerLocation,

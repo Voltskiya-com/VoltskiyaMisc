@@ -16,6 +16,7 @@ public class PluginAdmin extends AbstractModule {
         instance = this;
         new CommandListenerCommand();
         new CommandTaskManager();
+        new CommandReload();
     }
 
     public static PluginAdmin get() {
