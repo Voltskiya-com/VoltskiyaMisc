@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 public class PlayerSpawnDatabase {
 
     private static final TaskHandler<AsyncTaskQueue> ioService = new TaskHandlerQueue(10, 10, 10);
-    private static AppleAJDInst<PlayerSpawnDatabase, AsyncTaskQueue> manager;
+    private static AppleAJDInst<PlayerSpawnDatabase> manager;
 
     public Location respawnBox;
     public UUID mainWorld;

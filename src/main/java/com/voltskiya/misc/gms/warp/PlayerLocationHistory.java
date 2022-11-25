@@ -27,6 +27,9 @@ public class PlayerLocationHistory implements SaveFileable {
         this.player = player;
     }
 
+    public PlayerLocationHistory() {
+    }
+
     public void createBack(Location prevLocation) {
         if (history.isEmpty()) {
             nowIndexInHistory = 0;

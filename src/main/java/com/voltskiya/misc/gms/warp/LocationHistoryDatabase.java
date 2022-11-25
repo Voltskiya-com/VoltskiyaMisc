@@ -1,10 +1,9 @@
 package com.voltskiya.misc.gms.warp;
 
-import com.voltskiya.lib.pmc.FileIOServiceNow;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDTyped;
-import apple.utilities.threading.service.queue.AsyncTaskQueue;
 import apple.utilities.util.ObjectUtilsFormatting;
+import com.voltskiya.lib.pmc.FileIOServiceNow;
 import com.voltskiya.misc.gms.CommandsModule;
 import java.io.File;
 import java.util.Collection;
@@ -18,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class LocationHistoryDatabase {
 
-    public static AppleAJDTyped<PlayerLocationHistory, AsyncTaskQueue> manager;
+    public static AppleAJDTyped<PlayerLocationHistory> manager;
     private static final Map<UUID, PlayerLocationHistory> locationHistory = new HashMap<>();
 
     public static void initialize() {

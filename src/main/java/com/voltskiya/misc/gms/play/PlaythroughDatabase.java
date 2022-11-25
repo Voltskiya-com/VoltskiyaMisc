@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class PlaythroughDatabase {
 
     private static PlaythroughDatabase instance;
-    private AppleAJDTyped<PlayerPlaythroughs, AsyncTaskQueue> manager;
+    private AppleAJDTyped<PlayerPlaythroughs> manager;
     private Map<UUID, PlayerPlaythroughs> playthroughs;
 
     public PlaythroughDatabase() {
