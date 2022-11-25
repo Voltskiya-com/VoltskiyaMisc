@@ -64,7 +64,7 @@ public class PlayerSpawnAction {
         player.resetTitle();
         player.showTitle(Title.title(message, Component.empty(), timings));
         player.setInvulnerable(false);
-        player.getWorld().playSound(
+        player.playSound(
             Sound.sound(org.bukkit.Sound.UI_TOAST_CHALLENGE_COMPLETE.key(), Sound.Source.MASTER, 1f,
                 1f));
     }
@@ -91,7 +91,7 @@ public class PlayerSpawnAction {
         player.showTitle(Title.title(message, Component.empty(), timings));
         if (meta.isLastRun()) {
             actionManager.startAction(SIMMER);
-            player.getWorld().playSound(
+            player.playSound(
                 Sound.sound(org.bukkit.Sound.BLOCK_BEACON_DEACTIVATE.key(), Sound.Source.PLAYER, 1f,
                     1f));
         }

@@ -1,6 +1,7 @@
 package com.voltskiya.misc.gamerules.soul_mate;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -10,8 +11,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
 public class SoulMateDeathListener implements Listener {
 
     public static final String VEHICLE_SOUL_MATE_TAG = "vehicle_soul_mate";
@@ -19,6 +18,7 @@ public class SoulMateDeathListener implements Listener {
     public SoulMateDeathListener() {
         Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
     }
+
 
     @EventHandler
     public void onBottomTopDeath(EntityDeathEvent event) {
@@ -29,13 +29,13 @@ public class SoulMateDeathListener implements Listener {
             // kill above
             @NotNull List<Entity> up = entity.getPassengers();
             for (Entity e : up) {
-                if (e instanceof LivingEntity) {
-                    ((LivingEntity) e).setHealth(0);
+                if (e instanceof LivingEntity living) {
+                    living.setHealth(0);
                 }
             }
             @Nullable Entity down = entity.getVehicle();
-            if (down instanceof LivingEntity) {
-                ((LivingEntity) down).setHealth(0);
+            if (down instanceof LivingEntity living) {
+                living.setHealth(0);
             }
         }
     }

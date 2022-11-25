@@ -1,5 +1,7 @@
 package com.voltskiya.misc.gms;
 
+import com.voltskiya.lib.AbstractModule;
+import com.voltskiya.misc.VoltskiyaPlugin;
 import com.voltskiya.misc.gms.cmi.CommandFeed;
 import com.voltskiya.misc.gms.cmi.CommandHeal;
 import com.voltskiya.misc.gms.cmi.CommandSetFlyspeed;
@@ -12,7 +14,8 @@ import com.voltskiya.misc.gms.warp.CommandWarp;
 import com.voltskiya.misc.gms.warp.LocationHistoryDatabase;
 import com.voltskiya.misc.gms.warp.TeleportListener;
 import com.voltskiya.misc.gms.warp.WarpDatabase;
-import com.voltskiya.lib.AbstractModule;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommandsModule extends AbstractModule {
 
