@@ -1,8 +1,20 @@
 package com.voltskiya.misc.players.crafting;
 
+import com.voltskiya.misc.VoltskiyaPlugin;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.RecipeChoice;
+import org.bukkit.inventory.ShapedRecipe;
+
 public class RegisterCrafting {
 
-    public static void registerCraftingRecipes() {
+    public RegisterCrafting() {
         recipeFilter();
         recipeChain();
         recipeWool();

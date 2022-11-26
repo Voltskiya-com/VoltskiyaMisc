@@ -13,7 +13,7 @@ public class ModulePlayerChanges extends AbstractModule {
 
     @Override
     public void enable() {
-        RegisterCrafting.registerCraftingRecipes();
+        new RegisterCrafting();
         new PlayerInfinitePotions();
         new PlayerMilk();
         new PlayerAttributeListener();
