@@ -1,24 +1,24 @@
 package com.voltskiya.misc.gms.warp;
 
-import com.voltskiya.lib.pmc.FileIOServiceNow;
 import apple.mc.utilities.data.serialize.GsonSerializeLocation.Options;
 import apple.mc.utilities.data.serialize.GsonSerializeMC;
 import apple.utilities.database.ajd.AppleAJD;
 import apple.utilities.database.ajd.AppleAJDInst;
-import apple.utilities.threading.service.queue.AsyncTaskQueue;
-import com.voltskiya.misc.gms.CommandsModule;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.voltskiya.lib.pmc.FileIOServiceNow;
+import com.voltskiya.misc.gms.CommandsModule;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import org.bukkit.Location;
 import org.jetbrains.annotations.Nullable;
 
 public class WarpDatabase {
 
-    private static AppleAJDInst<WarpDatabase, AsyncTaskQueue> manager;
+    private static AppleAJDInst<WarpDatabase> manager;
     private final HashMap<String, WarpEntry> warps = new HashMap<>();
 
     public static void initialize() {

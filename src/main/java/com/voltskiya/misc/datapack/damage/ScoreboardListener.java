@@ -5,6 +5,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.Criteria;
@@ -35,13 +36,13 @@ public class ScoreboardListener implements Listener {
         int damageScore = scoreboard.getScore();
         if (damageScore == 0)
             return;
+        ((CraftPlayer) player).getHandle().invulnerableTime = 0;
         if (damageScore > 1000)
             hurtExcludeArmor(player, scoreToAmount(damageScore - 1000));
         else if (damageScore > 0)
             hurtIncludeArmor(player, scoreToAmount(damageScore));
         else
             heal(player, scoreToAmount(-damageScore));
-        System.out.println(damageScore);
         scoreboard.setScore(0);
     }
 

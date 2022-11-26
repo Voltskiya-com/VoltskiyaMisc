@@ -21,7 +21,6 @@ public class PlayerAttributesConfig {
     }
 
     public void updatePlayerAttributes(Player player) {
-        System.out.println("update");
         for (Attribute attribute : Attribute.values()) {
             @Nullable AttributeInstance playerAttribute = player.getAttribute(attribute);
             if (playerAttribute == null)
