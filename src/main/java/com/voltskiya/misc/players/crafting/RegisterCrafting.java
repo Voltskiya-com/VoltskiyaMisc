@@ -20,6 +20,7 @@ public class RegisterCrafting implements Listener {
     ArrayList<NamespacedKey> recipesNames = new ArrayList<>();
 
     public RegisterCrafting() {
+        VoltskiyaPlugin.get().registerEvents(this);
         recipeFilter();
         recipeChain();
         recipeWool();
