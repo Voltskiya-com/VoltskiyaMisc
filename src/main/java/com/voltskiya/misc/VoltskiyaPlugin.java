@@ -26,6 +26,7 @@ public class VoltskiyaPlugin extends AbstractVoltPlugin {
         return instance;
     }
 
+
     @Override
     public Collection<AbstractModule> getModules() {
         return List.of(new DropsModule(), new CommandsModule(), new TagGamerulesModule(),

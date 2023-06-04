@@ -6,7 +6,7 @@ import com.voltskiya.misc.VoltskiyaPlugin;
 import java.util.List;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.entity.Arrow;
+import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
@@ -28,7 +28,7 @@ public class HitRevengeListener implements Listener {
     public void onHitDoRevenge(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
         final Entity damaged = event.getEntity();
-        if (damager instanceof Arrow arrow) {
+        if (damager instanceof AbstractArrow arrow) {
             if (arrow.getShooter() instanceof Entity damagerEntity) {
                 damager = damagerEntity;
             }
