@@ -1,13 +1,14 @@
 package com.voltskiya.misc.gms.warp;
 
+import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.BukkitCommandCompletionContext;
 import com.voltskiya.lib.acf.CommandCompletions;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Name;
 import com.voltskiya.lib.acf.annotation.Subcommand;
-import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import java.util.Collection;
 import java.util.Locale;
@@ -17,6 +18,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
 @CommandAlias("warp")
+@CommandPermission("volt.gm.warp")
 public class CommandWarp extends BaseCommand implements SendMessage {
 
     public CommandWarp() {

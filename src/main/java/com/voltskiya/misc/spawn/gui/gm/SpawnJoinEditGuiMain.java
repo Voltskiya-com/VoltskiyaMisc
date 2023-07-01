@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public class SpawnJoinEditGuiMain extends InventoryGuiPageImplACD<SpawnJoinEditGui> {
+
     public SpawnJoinEditGuiMain(SpawnJoinEditGui parent) {
         super(parent);
     }

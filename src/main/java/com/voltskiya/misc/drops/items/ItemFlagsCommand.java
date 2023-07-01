@@ -1,13 +1,13 @@
 package com.voltskiya.misc.drops.items;
 
+import apple.mc.utilities.inventory.item.InventoryUtils;
+import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandCompletion;
 import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Name;
 import com.voltskiya.lib.acf.annotation.Subcommand;
-import apple.mc.utilities.inventory.item.InventoryUtils;
-import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @CommandAlias("give_asi")
-@CommandPermission("voltskiya.gm")
+@CommandPermission("volt.gm")
 public class ItemFlagsCommand extends BaseCommand implements SendMessage {
 
     public ItemFlagsCommand() {

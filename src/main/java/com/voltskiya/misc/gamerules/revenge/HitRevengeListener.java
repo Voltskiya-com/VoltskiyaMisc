@@ -11,6 +11,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.memory.MemoryKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -75,6 +76,7 @@ public class HitRevengeListener implements Listener {
         Location myLocation = damaged.getLocation();
         if (target == null) {
             damaged.setTarget(damager);
+            damaged.setMemory(MemoryKey.ANGRY_AT, damager.getUniqueId());
             return;
         }
         double distanceToTarget = DistanceUtils.distance(target.getLocation(), myLocation);

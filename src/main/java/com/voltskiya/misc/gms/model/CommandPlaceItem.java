@@ -2,6 +2,7 @@ package com.voltskiya.misc.gms.model;
 
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Default;
 import com.voltskiya.lib.acf.annotation.Name;
 import com.voltskiya.lib.acf.annotation.Optional;
@@ -19,6 +20,7 @@ import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 @CommandAlias("item_place")
+@CommandPermission("minecraft.command.give")
 public class CommandPlaceItem extends BaseCommand {
 
     public CommandPlaceItem() {

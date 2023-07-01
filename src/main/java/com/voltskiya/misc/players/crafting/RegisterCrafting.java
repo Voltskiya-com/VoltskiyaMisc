@@ -17,6 +17,7 @@ import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class RegisterCrafting implements Listener {
+
     ArrayList<NamespacedKey> recipesNames = new ArrayList<>();
 
     public RegisterCrafting() {
@@ -27,7 +28,7 @@ public class RegisterCrafting implements Listener {
         recipeChainArmor();
     }
 
-    private void recipeChain(){
+    private void recipeChain() {
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "Chain"), new ItemStack(Material.CHAIN, 2));
         recipe.shape("N", "I", "N");
         recipe.setIngredient('I', Material.IRON_INGOT);
@@ -35,44 +36,49 @@ public class RegisterCrafting implements Listener {
         recipesNames.add(recipe.getKey());
         Bukkit.addRecipe(recipe);
     }
-    private void recipeWool(){
+
+    private void recipeWool() {
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "Wool"), new ItemStack(Material.STRING, 4));
         recipe.shape("W");
         recipe.setIngredient('W', new RecipeChoice.MaterialChoice(woolList()));
         recipesNames.add(recipe.getKey());
         Bukkit.addRecipe(recipe);
     }
-    private void recipeChainArmor(){
-        ShapedRecipe helmet = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainHelmet"), new ItemStack(Material.CHAINMAIL_HELMET, 1));
+
+    private void recipeChainArmor() {
+        ShapedRecipe helmet = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainHelmet"),
+            new ItemStack(Material.CHAINMAIL_HELMET, 1));
         helmet.shape("CCC", "C C");
         helmet.setIngredient('C', Material.CHAIN);
         recipesNames.add(helmet.getKey());
         Bukkit.addRecipe(helmet);
 
-        ShapedRecipe chestPlate = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainChestPlate"), new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1));
+        ShapedRecipe chestPlate = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainChestPlate"),
+            new ItemStack(Material.CHAINMAIL_CHESTPLATE, 1));
         chestPlate.shape("C C", "CCC", "CCC");
         chestPlate.setIngredient('C', Material.CHAIN);
         recipesNames.add(chestPlate.getKey());
         Bukkit.addRecipe(chestPlate);
 
-        ShapedRecipe leggings = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainLeggings"), new ItemStack(Material.CHAINMAIL_LEGGINGS, 1));
+        ShapedRecipe leggings = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainLeggings"),
+            new ItemStack(Material.CHAINMAIL_LEGGINGS, 1));
         leggings.shape("CCC", "C C", "C C");
         leggings.setIngredient('C', Material.CHAIN);
         recipesNames.add(leggings.getKey());
         Bukkit.addRecipe(leggings);
 
-        ShapedRecipe boots = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainBoots"), new ItemStack(Material.CHAINMAIL_BOOTS, 1));
+        ShapedRecipe boots = new ShapedRecipe(new NamespacedKey(VoltskiyaPlugin.get(), "ChainBoots"),
+            new ItemStack(Material.CHAINMAIL_BOOTS, 1));
         boots.shape("C C", "C C");
         boots.setIngredient('C', Material.CHAIN);
         recipesNames.add(boots.getKey());
         Bukkit.addRecipe(boots);
     }
 
-    private void recipeFilter(){
+    private void recipeFilter() {
         Iterator<Recipe> recipes = Bukkit.recipeIterator();
         List<Material> bannedItems = new ArrayList<>();
         bannedItems.add(Material.CHAIN);
-        bannedItems.add(Material.BUCKET);
         while (recipes.hasNext()) {
             if (bannedItems.contains(recipes.next().getResult().getType())) {
                 recipes.remove();
@@ -100,6 +106,7 @@ public class RegisterCrafting implements Listener {
         choices.add(Material.BLACK_WOOL);
         return choices;
     }
+
     @EventHandler
     private void onPlayerJoinAddRecipes(PlayerJoinEvent event) {
         Player player = event.getPlayer();

@@ -2,15 +2,16 @@ package com.voltskiya.misc.gms.give.tagged;
 
 import apple.mc.utilities.inventory.item.InventoryUtils;
 import apple.mc.utilities.player.chat.SendMessage;
-import com.voltskiya.misc.VoltskiyaPlugin;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.BukkitCommandCompletionContext;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandCompletion;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Default;
 import com.voltskiya.lib.acf.annotation.Name;
 import com.voltskiya.lib.acf.annotation.Single;
 import com.voltskiya.lib.acf.annotation.Split;
+import com.voltskiya.misc.VoltskiyaPlugin;
 import de.tr7zw.nbtapi.NBTCompound;
 import de.tr7zw.nbtapi.NBTItem;
 import de.tr7zw.nbtapi.NBTList;
@@ -22,6 +23,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 @CommandAlias("givetag")
+@CommandPermission("minecraft.command.give")
 public class CommandGiveTagged extends BaseCommand implements SendMessage {
 
 

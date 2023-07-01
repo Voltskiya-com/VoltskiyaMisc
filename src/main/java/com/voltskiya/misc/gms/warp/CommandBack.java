@@ -1,16 +1,18 @@
 package com.voltskiya.misc.gms.warp;
 
+import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
+import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Default;
 import com.voltskiya.lib.acf.annotation.Subcommand;
-import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 @CommandAlias("back")
+@CommandPermission("volt.gm.cmi.tp")
 public class CommandBack extends BaseCommand implements SendMessage {
 
     public CommandBack() {

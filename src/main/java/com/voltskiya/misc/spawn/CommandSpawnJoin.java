@@ -1,12 +1,12 @@
 package com.voltskiya.misc.spawn;
 
+import apple.mc.utilities.player.chat.SendMessage;
+import apple.mc.utilities.world.vector.VectorUtils;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Default;
 import com.voltskiya.lib.acf.annotation.Subcommand;
-import apple.mc.utilities.player.chat.SendMessage;
-import apple.mc.utilities.world.vector.VectorUtils;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import com.voltskiya.misc.spawn.gui.gm.SpawnJoinEditGui;
 import com.voltskiya.misc.spawn.gui.player.SpawnJoinGui;
@@ -37,7 +37,6 @@ public class CommandSpawnJoin extends BaseCommand implements SendMessage {
     @CommandPermission("volt.game.edit.join")
     public class CommandSpawnJoinEdit extends BaseCommand {
 
-        @Default
         @Subcommand("gui")
         public void spawn(Player player) {
             player.openInventory(new SpawnJoinEditGui(player).getInventory());

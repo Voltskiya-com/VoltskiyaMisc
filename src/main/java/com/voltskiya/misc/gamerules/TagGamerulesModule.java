@@ -6,6 +6,7 @@ import com.voltskiya.misc.gamerules.blindness.BlindnessListener;
 import com.voltskiya.misc.gamerules.coral.CoralFadeListener;
 import com.voltskiya.misc.gamerules.damage.NoDamageCausedListener;
 import com.voltskiya.misc.gamerules.damage.NoEntityDamageListener;
+import com.voltskiya.misc.gamerules.explosion.ExplosionRadiusListener;
 import com.voltskiya.misc.gamerules.ice.IceSpreadListener;
 import com.voltskiya.misc.gamerules.no_vehicle.NoVehicleEnterListener;
 import com.voltskiya.misc.gamerules.revenge.HitRevengeListener;
@@ -24,6 +25,7 @@ public class TagGamerulesModule extends AbstractModule {
         new IceSpreadListener();
         new NoVehicleEnterListener();
         new BlindnessListener();
+        new ExplosionRadiusListener();
         ReloadCleanup.cleanup();
     }
 
