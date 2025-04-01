@@ -5,15 +5,14 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.Criteria;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 
-public class ScoreboardListener implements Listener {
+public class ScoreboardListener {
 
     private Objective damageObjective;
 
@@ -54,7 +53,7 @@ public class ScoreboardListener implements Listener {
     private double normalizeHealth(Player player, double health) {
         if (health <= 0)
             return 0;
-        AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attribute = player.getAttribute(Attribute.MAX_HEALTH);
         double maxHealth = attribute == null ? 20 : attribute.getValue();
         return Math.min(health, maxHealth);
     }

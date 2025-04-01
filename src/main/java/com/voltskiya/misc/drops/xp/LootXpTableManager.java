@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import net.minecraft.world.entity.EntityType;
+import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class LootXpTableManager {
 
+    private static LootXpTableManager instance;
     private final HashMap<String, Integer> tagXpTables = new HashMap<>();
     private final HashMap<EntityType<?>, Integer> entityXpTables = new HashMap<>();
-    private static LootXpTableManager instance;
 
     public LootXpTableManager() {
         instance = this;
@@ -20,6 +21,11 @@ public class LootXpTableManager {
     @Nullable
     public static Integer get(String tag) {
         return instance.tagXpTables.get(tag);
+    }
+
+    public static Integer get(CraftEntity entity) {
+        EntityType<?> type = entity.getHandle().getType();
+        return get(type);
     }
 
     public static Integer get(EntityType<?> entityType) {

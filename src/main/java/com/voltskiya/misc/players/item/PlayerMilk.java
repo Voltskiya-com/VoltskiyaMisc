@@ -33,7 +33,7 @@ public class PlayerMilk implements Listener {
     private final Map<UUID, Integer> lastMilked = new HashMap<>();
 
     public PlayerMilk() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
     @EventHandler(ignoreCancelled = true)

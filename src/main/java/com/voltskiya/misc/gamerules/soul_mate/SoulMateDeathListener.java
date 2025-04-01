@@ -2,7 +2,6 @@ package com.voltskiya.misc.gamerules.soul_mate;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
 import java.util.List;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -16,7 +15,7 @@ public class SoulMateDeathListener implements Listener {
     public static final String VEHICLE_SOUL_MATE_TAG = "vehicle_soul_mate";
 
     public SoulMateDeathListener() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
 

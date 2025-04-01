@@ -3,6 +3,7 @@ package com.voltskiya.misc.spawn;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import java.time.Duration;
 import net.kyori.adventure.sound.Sound;
+import net.kyori.adventure.sound.Sound.Source;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.TextComponent;
@@ -30,12 +31,6 @@ public class PlayerSpawnAction {
         .style(Style.style(TextColor.color(0xacacad)));
 
     private final int duration = PlayerSpawnConfig.get().getInvulnerability();
-    RepeatingActionManager actionManager = new RepeatingActionManager(
-        VoltskiyaPlugin.get()).registerInit(this::runInit).registerFinally(this::runFinally)
-        .registerAction(new RepeatableActionImpl(SPAWN, this::showTitle, duration,
-            duration / VOLTSKIYA.length())).registerAction(
-            new RepeatableActionImpl(SIMMER, this::simmerTitle, PlayerSpawnConfig.get().getSimmer(),
-                5));
 
     public PlayerSpawnAction(Location spawnLocation, HumanEntity player) {
         this.spawnLocation = spawnLocation;
@@ -67,7 +62,12 @@ public class PlayerSpawnAction {
         player.playSound(
             Sound.sound(org.bukkit.Sound.UI_TOAST_CHALLENGE_COMPLETE.key(), Sound.Source.MASTER, 1f,
                 1f));
-    }
+    }    RepeatingActionManager actionManager = new RepeatingActionManager(
+        VoltskiyaPlugin.get()).registerInit(this::runInit).registerFinally(this::runFinally)
+        .registerAction(new RepeatableActionImpl(SPAWN, this::showTitle, duration,
+            duration / VOLTSKIYA.length())).registerAction(
+            new RepeatableActionImpl(SIMMER, this::simmerTitle, PlayerSpawnConfig.get().getSimmer(),
+                5));
 
     private ActionReturn showTitle(ActionMeta meta) {
         int currentTick = meta.currentRepeat();
@@ -91,10 +91,16 @@ public class PlayerSpawnAction {
         player.showTitle(Title.title(message, Component.empty(), timings));
         if (meta.isLastRun()) {
             actionManager.startAction(SIMMER);
-            player.playSound(
-                Sound.sound(org.bukkit.Sound.BLOCK_BEACON_DEACTIVATE.key(), Sound.Source.PLAYER, 1f,
-                    1f));
+
+            player.playSound(Sound.sound(
+                org.bukkit.Sound.BLOCK_BEACON_DEACTIVATE,
+                Source.PLAYER, 1f, 1f
+            ));
         }
         return new ActionReturn(true);
     }
+
+
+
+
 }

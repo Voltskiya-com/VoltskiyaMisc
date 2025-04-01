@@ -12,8 +12,9 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class BlockBreaker implements Listener {
+
     public BlockBreaker() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -23,13 +24,13 @@ public class BlockBreaker implements Listener {
         event.setDropItems(false);
         Location location = event.getBlock().getLocation();
         Bukkit.getScheduler().scheduleSyncDelayedTask(VoltskiyaPlugin.get(),
-                () -> dropItems(blockBreakTable, location)
+            () -> dropItems(blockBreakTable, location)
         );
     }
 
     private void dropItems(BlockBreakTable blockBreakTable, Location location) {
         for (ItemStack item : blockBreakTable.drop()) {
-            location.getWorld().spawnEntity(location, EntityType.DROPPED_ITEM, CreatureSpawnEvent.SpawnReason.CUSTOM, e -> {
+            location.getWorld().spawnEntity(location, EntityType.ITEM, CreatureSpawnEvent.SpawnReason.CUSTOM, e -> {
                 if (e instanceof Item itemEntity) {
                     itemEntity.setItemStack(item);
                 }

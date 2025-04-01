@@ -23,20 +23,23 @@ import org.bukkit.event.player.PlayerResourcePackStatusEvent.Status;
 public class ResourcePackListener implements Listener {
 
     private static final String resourcePack = ResourcePackConfig.get().url;
-    private static String hash;
 
     public ResourcePackListener() {
         VoltskiyaPlugin.get().registerEvents(this);
-        try {
-            URL url = new URL(resourcePack);
-            try (InputStream stream = url.openStream()) {
-                @SuppressWarnings("deprecation") HashCode out = Hashing.sha1().hashBytes(stream.readAllBytes());
-                hash = HexFormat.of().formatHex(out.asBytes());
+        if (!ResourcePackConfig.get().isRecentlyUpdated()) {
+            try {
+                URL url = new URL(resourcePack);
+                String hash;
+                try (InputStream stream = url.openStream()) {
+                    @SuppressWarnings("deprecation") HashCode out = Hashing.sha1().hashBytes(stream.readAllBytes());
+                    hash = HexFormat.of().formatHex(out.asBytes());
+                }
+                ResourcePackConfig.get().update(hash);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Bad resourcepack URL: " + resourcePack, e);
+            } catch (IOException e) {
+                throw new RuntimeException("Error reading resourcepack: " + resourcePack, e);
             }
-        } catch (MalformedURLException e) {
-            throw new RuntimeException("Bad resourcepack URL: " + resourcePack, e);
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading resourcepack: " + resourcePack, e);
         }
     }
 
@@ -44,7 +47,7 @@ public class ResourcePackListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         VoltskiyaPlugin.get().scheduleSyncDelayedTask(() -> {
             Player player = event.getPlayer();
-            player.setResourcePack(resourcePack, hash, true);
+            player.setResourcePack(resourcePack, ResourcePackConfig.get().hash, true);
             if (isAccepted(player.getResourcePackStatus())) return;
             if (player.getResourcePackStatus() != null) {
                 declinedPack(player);

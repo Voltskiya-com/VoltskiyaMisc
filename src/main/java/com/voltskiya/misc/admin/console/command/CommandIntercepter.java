@@ -1,7 +1,10 @@
 package com.voltskiya.misc.admin.console.command;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
-import org.bukkit.Bukkit;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -11,16 +14,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class CommandIntercepter implements Listener {
+
     private static final Set<CommandBlockInfo> commands = new HashSet<>();
 
     public CommandIntercepter() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
+    }
+
+    public static List<CommandBlockInfo> get() {
+        synchronized (commands) {
+            return new ArrayList<>(commands);
+        }
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -33,13 +38,8 @@ public class CommandIntercepter implements Listener {
         }
     }
 
-    public static List<CommandBlockInfo> get() {
-        synchronized (commands) {
-            return new ArrayList<>(commands);
-        }
-    }
-
     public record CommandBlockInfo(Location location, Material type, @NotNull String command) {
+
         @Override
         public int hashCode() {
             return location.hashCode();

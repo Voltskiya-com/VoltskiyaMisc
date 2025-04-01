@@ -1,7 +1,6 @@
 package com.voltskiya.misc.gamerules.arrow;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.AbstractArrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -15,7 +14,7 @@ public class ArrowHitListener implements Listener {
     private static final double ARROW_INCREASE_DAMAGE = 1.35;
 
     public ArrowHitListener() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
     @EventHandler

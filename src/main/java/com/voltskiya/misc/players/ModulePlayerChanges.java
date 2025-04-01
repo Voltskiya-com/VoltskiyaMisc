@@ -11,6 +11,7 @@ import com.voltskiya.misc.players.item.PlayerInfinitePotions;
 import com.voltskiya.misc.players.item.PlayerMilk;
 import com.voltskiya.misc.players.resourcepack.ResourcePackConfig;
 import com.voltskiya.misc.players.resourcepack.ResourcePackListener;
+import com.voltskiya.misc.players.resourcepack.ResourcePackReloadCommand;
 import java.util.List;
 import org.bukkit.Bukkit;
 
@@ -24,6 +25,7 @@ public class ModulePlayerChanges extends AbstractModule {
         new PlayerMilk();
         new PlayerAttributeListener();
         new ResourcePackListener();
+        new ResourcePackReloadCommand();
         Bukkit.getScheduler().scheduleSyncRepeatingTask(VoltskiyaPlugin.get(), PlayerGlider::tickAll, 0, 1);
     }
 

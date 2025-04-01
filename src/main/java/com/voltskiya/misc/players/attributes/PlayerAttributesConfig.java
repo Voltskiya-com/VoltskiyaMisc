@@ -30,12 +30,12 @@ public class PlayerAttributesConfig {
             }
         }
 
-        AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
+        AttributeInstance attribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
         if (attribute == null) {
-            player.registerAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
-            attribute = player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
+            player.registerAttribute(Attribute.KNOCKBACK_RESISTANCE);
+            attribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
             if (attribute == null) {
-                VoltskiyaPlugin.get().getSLF4JLogger().error("GENERIC_KNOCKBACK_RESISTANCE is unregistered on " + player.getName());
+                VoltskiyaPlugin.get().getSLF4JLogger().error("GENERIC_KNOCKBACK_RESISTANCE is unregistered on {}", player.getName());
                 return;
             }
         }

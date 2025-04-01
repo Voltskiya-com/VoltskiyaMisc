@@ -1,5 +1,6 @@
 package com.voltskiya.misc.gms.cmi;
 
+import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.annotation.CommandAlias;
 import com.voltskiya.lib.acf.annotation.CommandCompletion;
@@ -7,7 +8,6 @@ import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Default;
 import com.voltskiya.lib.acf.annotation.Name;
 import com.voltskiya.lib.acf.annotation.Optional;
-import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
@@ -42,10 +42,12 @@ public class CommandHeal extends BaseCommand implements SendMessage {
     }
 
     private void healPlayer(Player player) {
-        AttributeInstance maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance maxHealth = player.getAttribute(Attribute.MAX_HEALTH);
         player.setHealth(maxHealth == null ? 20 : maxHealth.getValue());
         player.setFoodLevel(20);
         player.setSaturation(5);
+        player.setFireTicks(0);
+        player.setFreezeTicks(0);
     }
 }
 

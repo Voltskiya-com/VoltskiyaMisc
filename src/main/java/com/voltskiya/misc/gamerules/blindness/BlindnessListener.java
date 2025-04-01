@@ -1,7 +1,7 @@
 package com.voltskiya.misc.gamerules.blindness;
 
 import com.voltskiya.misc.VoltskiyaPlugin;
-import org.bukkit.craftbukkit.v1_20_R1.entity.CraftMob;
+import org.bukkit.craftbukkit.entity.CraftMob;
 import org.bukkit.entity.Mob;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

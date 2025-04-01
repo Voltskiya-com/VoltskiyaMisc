@@ -1,5 +1,8 @@
 package com.voltskiya.misc.drops;
 
+import static net.minecraft.resources.ResourceLocation.DEFAULT_NAMESPACE;
+
+import apple.mc.utilities.player.chat.SendMessage;
 import com.voltskiya.lib.acf.BaseCommand;
 import com.voltskiya.lib.acf.BukkitCommandCompletionContext;
 import com.voltskiya.lib.acf.CommandCompletions;
@@ -8,16 +11,13 @@ import com.voltskiya.lib.acf.annotation.CommandCompletion;
 import com.voltskiya.lib.acf.annotation.CommandPermission;
 import com.voltskiya.lib.acf.annotation.Single;
 import com.voltskiya.lib.acf.annotation.Subcommand;
-import apple.mc.utilities.player.chat.SendMessage;
-import apple.nms.decoding.iregistry.DecodeEntityTypes;
-import apple.nms.decoding.iregistry.DecodeIRegistry;
-import apple.nms.decoding.world.DecodeMinecraftKey;
 import com.voltskiya.misc.VoltskiyaPlugin;
 import com.voltskiya.misc.drops.block.gui.BlockTableGui;
 import com.voltskiya.misc.drops.xp.LootXpTableManager;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Optional;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import org.bukkit.Bukkit;
@@ -41,17 +41,22 @@ public class DropsCommand extends BaseCommand implements SendMessage {
     }
 
     private Collection<String> getEntityTypes() {
-        Collection<String> completions = new ArrayList<>();
-        for (EntityType<?> entityTypes : DecodeIRegistry.getEntityType()) {
-            ResourceLocation name = DecodeEntityTypes.getKey(entityTypes);
+        Collection<String> completions = new HashSet<>();
+
+        for (EntityType<?> entityTypes : BuiltInRegistries.ENTITY_TYPE) {
+            ResourceLocation name = EntityType.getKey(entityTypes);
             completions.add(name.toString());
-            if (DecodeMinecraftKey.isMinecraft(name)) {
-                completions.add(DecodeMinecraftKey.getKey(name));
+            if (DEFAULT_NAMESPACE.equals(name.getNamespace())) {
+                completions.add(name.getPath());
             }
         }
         return completions;
     }
 
+    @Subcommand("block")
+    public void block(Player player) {
+        player.openInventory(new BlockTableGui(player).getInventory());
+    }
 
     @Subcommand("xp")
     public class Xp extends BaseCommand {
@@ -116,10 +121,5 @@ public class DropsCommand extends BaseCommand implements SendMessage {
             }
         }
 
-    }
-
-    @Subcommand("block")
-    public void block(Player player) {
-        player.openInventory(new BlockTableGui(player).getInventory());
     }
 }

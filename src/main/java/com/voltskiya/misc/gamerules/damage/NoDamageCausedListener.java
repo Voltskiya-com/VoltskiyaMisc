@@ -6,11 +6,10 @@ import static voltskiya.apple.utilities.minecraft.TagConstants.NO_COLLIDE_FIREBA
 import static voltskiya.apple.utilities.minecraft.TagConstants.NO_FALL_DAMAGE;
 import static voltskiya.apple.utilities.minecraft.TagConstants.NO_SUFFOCATION_DAMAGE;
 
-import com.voltskiya.misc.VoltskiyaPlugin;
 import com.destroystokyo.paper.event.entity.ProjectileCollideEvent;
+import com.voltskiya.misc.VoltskiyaPlugin;
 import java.util.HashMap;
 import java.util.Map;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
@@ -28,7 +27,7 @@ public class NoDamageCausedListener implements Listener {
     }};
 
     public NoDamageCausedListener() {
-        Bukkit.getPluginManager().registerEvents(this, VoltskiyaPlugin.get());
+        VoltskiyaPlugin.get().registerEvents(this);
     }
 
     @EventHandler

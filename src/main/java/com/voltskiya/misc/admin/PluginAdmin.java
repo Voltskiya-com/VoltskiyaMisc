@@ -12,16 +12,16 @@ public class PluginAdmin extends AbstractModule {
     private static PluginAdmin instance;
     private CommandIntercepter listener = null;
 
+    public static PluginAdmin get() {
+        return instance;
+    }
+
     @Override
     public void enable() {
         instance = this;
         new CommandListenerCommand();
         new CommandTaskManager();
         new CommandReload();
-    }
-
-    public static PluginAdmin get() {
-        return instance;
     }
 
     public void enable(boolean shouldRun) {

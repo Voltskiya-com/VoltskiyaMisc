@@ -12,15 +12,15 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 @CommandAlias("item_modify")
-@CommandPermission("minecraft.command.give")
+@CommandPermission("minecraft.gm.item")
 public class CommandItemDetails extends BaseCommand {
 
     public CommandItemDetails() {
         VoltskiyaPlugin.get().getCommandManager().registerCommand(this);
     }
 
-    @CommandPermission("volt.gm.item.rename")
     @Subcommand("rename")
+    @CommandPermission("volt.gm.item.rename")
     public void rename(Player player, String newName) {
         @NotNull ItemStack item = player.getInventory().getItemInMainHand();
         InventoryUtils.get().displayName(item, newName);
